@@ -141,7 +141,7 @@
     position:relative; overflow:hidden;
     transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .poster:hover{border-color:var(--champagne); transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.35);}
+  .poster:hover{border-color:var(--cream); transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.35);}
   .poster-banner{position:relative; height:150px; background-size:cover; background-position:center;}
   .poster-banner::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(26,2,11,0) 35%, var(--wine-soft) 100%);}
   .poster-badge-date{
@@ -151,7 +151,20 @@
   }
   .poster-badge-date .day{display:block; font-size:16px; font-weight:600;}
   .poster-badge-date .month{display:block; font-size:9.5px; letter-spacing:0.08em; color:var(--rose-dim);}
+  .poster-like{
+    position:absolute; top:12px; right:12px; z-index:2;
+    width:30px; height:30px; border-radius:50%;
+    background:rgba(26,2,11,0.6); border:1px solid var(--line-strong); color:var(--cream);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  .poster-like svg{width:15px; height:15px;}
+  .poster-like.liked{color:var(--champagne); border-color:var(--champagne);}
+  .poster-like.liked svg{fill:currentColor;}
   .poster-body{padding:22px 26px 28px;}
+  .poster-category{font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--champagne); margin:0 0 8px;}
+  .poster-with{font-size:13px; color:var(--cream-dim); margin:0 0 16px;}
+  .poster-with strong{color:var(--cream); font-weight:600;}
   .poster.soldout .poster-banner{opacity:0.35;}
   .poster.soldout .poster-body > *:not(.ticket-row){opacity:0.35;}
   .poster .stamp{
@@ -164,14 +177,19 @@
     background:rgba(26,2,11,0.55);
     pointer-events:none; white-space:nowrap; z-index:3;
   }
-  .poster .tag{font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-dim);}
-  .poster .tag.soldout{color:var(--wine); background:var(--cream); padding:2px 9px; border-radius:999px; display:inline-block;}
-  .poster-banner .tag{
-    position:absolute; top:12px; right:12px; z-index:2;
-    background:rgba(26,2,11,0.72); border:1px solid var(--line-strong); border-radius:999px; padding:6px 13px;
+  .poster-loc-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    border-top:1px solid var(--line); padding-top:14px; margin-top:2px;
+    font-size:13px; color:var(--cream-dim); cursor:pointer; list-style:none;
   }
-  .poster-banner .tag.soldout{background:var(--cream); border-color:var(--cream);}
-  .poster .meta svg{width:14px; height:14px; vertical-align:-2px; margin-right:5px; opacity:0.8;}
+  .poster-loc-row::-webkit-details-marker{display:none;}
+  .poster-loc-row svg{color:var(--champagne); width:14px; height:14px; margin-right:6px; vertical-align:-2px; opacity:1;}
+  .poster-loc-row .arrow{transition:transform 0.2s ease; color:var(--rose-dim); flex:none;}
+  .poster details[open] .poster-loc-row .arrow{transform:rotate(90deg);}
+  .poster-details-inner{padding-top:14px;}
+  .poster-details-inner .meta-line{display:flex; align-items:center; font-size:13px; color:var(--cream-dim); margin:0 0 7px;}
+  .poster-details-inner .meta-line svg{color:var(--champagne); width:14px; height:14px; margin-right:6px; flex:none;}
+  .poster-details-inner .desc{font-size:13.5px; color:var(--cream-dim); margin:10px 0 0; max-width:56ch;}
   .poster .ticket-row{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;}
   .poster .ticket-btn{
     font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
@@ -186,17 +204,6 @@
     padding:2px 8px; border-radius:2px; font-size:11px; font-family:var(--font-mono);
     user-select:none; opacity:0.18; margin-bottom:18px;
   }
-  .poster .meta{display:flex; flex-direction:column; gap:7px; margin-top:16px;}
-  .poster .meta span{font-size:13px; color:var(--cream-dim);}
-  .poster details{margin-top:14px; border-top:1px solid var(--line); padding-top:14px;}
-  .poster summary{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--rose-dim); cursor:pointer; list-style:none;
-  }
-  .poster summary::-webkit-details-marker{display:none;}
-  .poster summary::after{content:" +"; }
-  .poster details[open] summary::after{content:" −";}
-  .poster details p{font-size:13.5px; color:var(--cream-dim); margin:12px 0 0; max-width:56ch;}
 
   .newsletter{background:var(--wine-soft); border:1px solid var(--line); padding:36px 32px; text-align:center;}
   .newsletter h3{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:clamp(20px,3.6vw,26px); margin:0 0 10px;}
@@ -633,6 +640,7 @@
       lieuEn: "Chartrons, Bordeaux — address shared with registrants",
       titreFr: "Quelles sont les dernières découvertes dans l'espace ?",
       titreEn: "What are the latest discoveries in space?",
+      categorieFr: "Sciences & espace", categorieEn: "Science & space",
       bannerImg: "img/evt-conversation.jpg",
       mystery: false,
       guestName: "Franck Selsis",
@@ -650,6 +658,7 @@
       lieuFr: "Chartrons, Bordeaux — adresse communiquée aux inscrit·e·s",
       lieuEn: "Chartrons, Bordeaux — address shared with registrants",
       titreFr: "Un parcours qui sort de l'ordinaire.", titreEn: "A life story out of the ordinary.",
+      categorieFr: "Soirée mystère", categorieEn: "Mystery evening",
       bannerImg: "img/evt-rencontre.jpg",
       mystery: true,
       descFr: "Deuxième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
@@ -664,6 +673,7 @@
       lieuFr: "Chartrons, Bordeaux — adresse communiquée aux inscrit·e·s",
       lieuEn: "Chartrons, Bordeaux — address shared with registrants",
       titreFr: "Quelqu'un qui a vu ce qu'on ne voit jamais.", titreEn: "Someone who has seen what you never get to see.",
+      categorieFr: "Soirée mystère", categorieEn: "Mystery evening",
       bannerImg: "img/evt-partage.jpg",
       mystery: true,
       descFr: "Troisième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
@@ -684,8 +694,10 @@
   var ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>';
   var ICON_PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2a7 7 0 017 7.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>';
 
+  var ICON_HEART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-10-9.3C.3 7.8 2 4.5 5.3 4c2.1-.3 4 .7 5.2 2.6C11.7 4.7 13.6 3.7 15.7 4c3.3.5 5 3.8 3.3 7.2-2.5 4.7-10 9.3-10 9.3z"/></svg>';
+
   var grid = document.getElementById('posterGrid');
-  EVENTS.forEach(function(ev){
+  EVENTS.forEach(function(ev, idx){
     var card = document.createElement('div');
     card.className = 'poster' + (ev.soldOut ? ' soldout' : '');
     var stampHtml = ev.soldOut ? '<div class="stamp"><span class="fr">Complet</span><span class="en">Sold out</span></div>' : '';
@@ -693,43 +705,57 @@
       ? '<a class="ticket-btn" style="opacity:1;" href="' + waitlistUrl + '" target="_blank" rel="noopener"><span class="fr">Rejoindre la liste d\'attente</span><span class="en">Join the waitlist</span></a>'
       : '<a class="ticket-btn" href="' + ev.ticketUrl + '" target="_blank" rel="noopener"><span class="fr">Prendre un ticket</span><span class="en">Get a ticket</span></a>';
 
-    var guestHtml = ev.mystery
+    var withHtml = ev.mystery
       ? '<div class="intervenant">██████████████████</div>'
-      : '<p style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:17px; color:var(--cream); margin:4px 0 2px;">' + ev.guestName + '</p>' +
-        '<p style="font-size:12.5px; color:var(--rose-dim); margin:0 0 4px;"><span class="fr">' + ev.guestRoleFr + '</span><span class="en">' + ev.guestRoleEn + '</span></p>';
+      : '<p class="poster-with"><span class="fr">Avec <strong>' + ev.guestName + '</strong>, ' + ev.guestRoleFr + '</span>' +
+        '<span class="en">With <strong>' + ev.guestName + '</strong>, ' + ev.guestRoleEn + '</span></p>';
 
     var detailsHtml =
       '<details>' +
-        '<summary><span class="fr">Voir plus</span><span class="en">See more</span></summary>' +
-        '<p><span class="fr">' + ev.descFr + '</span><span class="en">' + ev.descEn + '</span></p>' +
+        '<summary class="poster-loc-row">' +
+          '<span>' + ICON_PIN + '<span class="fr">' + ev.lieuFr + '</span><span class="en">' + ev.lieuEn + '</span></span>' +
+          '<span class="arrow">→</span>' +
+        '</summary>' +
+        '<div class="poster-details-inner">' +
+          '<p class="meta-line">' + ICON_CAL + '<span class="fr">' + ev.dateFr + '</span><span class="en">' + ev.dateEn + '</span></p>' +
+          '<p class="meta-line">' + ICON_CLOCK + '<span class="fr">' + ev.heureFr + '</span><span class="en">' + ev.heureEn + '</span></p>' +
+          '<p class="desc"><span class="fr">' + ev.descFr + '</span><span class="en">' + ev.descEn + '</span></p>' +
+        '</div>' +
       '</details>';
 
     var badge = dateBadge(ev.startISO);
     var bannerHtml =
       '<div class="poster-banner" style="background-image:url(\'' + ev.bannerImg + '\');">' +
         '<div class="poster-badge-date"><span class="day">' + badge.day + '</span><span class="month">' + badge.month + '</span></div>' +
-        '<span class="tag' + (ev.soldOut ? ' soldout' : '') + '">' +
-          (ev.soldOut
-            ? '<span class="fr">Complet</span><span class="en">Sold out</span>'
-            : '<span class="fr">Bientôt</span><span class="en">Coming soon</span>') +
-        '</span>' +
+        '<button type="button" class="poster-like" data-like-id="' + idx + '" aria-label="Favori">' + ICON_HEART + '</button>' +
       '</div>';
 
     var bodyHtml =
       '<div class="poster-body">' +
+        '<p class="poster-category"><span class="fr">' + ev.categorieFr + '</span><span class="en">' + ev.categorieEn + '</span></p>' +
         '<h3><span class="fr">' + ev.titreFr + '</span><span class="en">' + ev.titreEn + '</span></h3>' +
-        guestHtml +
+        withHtml +
         detailsHtml +
-        '<div class="meta">' +
-          '<span>' + ICON_CAL + '<span class="fr">' + ev.dateFr + '</span><span class="en">' + ev.dateEn + '</span></span>' +
-          '<span>' + ICON_CLOCK + '<span class="fr">' + ev.heureFr + '</span><span class="en">' + ev.heureEn + '</span></span>' +
-          '<span>' + ICON_PIN + '<span class="fr">' + ev.lieuFr + '</span><span class="en">' + ev.lieuEn + '</span></span>' +
-        '</div>' +
         '<div class="ticket-row">' + buttonsHtml + '</div>' +
       '</div>';
 
     card.innerHTML = bannerHtml + bodyHtml + stampHtml;
     grid.appendChild(card);
+  });
+
+  /* Favoris : préférence stockée localement sur l'appareil du visiteur
+     (pas un compteur partagé entre visiteurs). */
+  try {
+    var likedEvents = JSON.parse(localStorage.getItem('rareClubLikes') || '{}');
+  } catch(e){ var likedEvents = {}; }
+  document.querySelectorAll('.poster-like').forEach(function(btn){
+    var id = btn.getAttribute('data-like-id');
+    if (likedEvents[id]) btn.classList.add('liked');
+    btn.addEventListener('click', function(){
+      var isLiked = btn.classList.toggle('liked');
+      likedEvents[id] = isLiked;
+      try { localStorage.setItem('rareClubLikes', JSON.stringify(likedEvents)); } catch(e){}
+    });
   });
 
   /* Schema.org structured data, pour que Google affiche les soirées
