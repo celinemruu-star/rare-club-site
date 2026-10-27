@@ -162,9 +162,6 @@
   .poster-like.liked{color:var(--champagne); border-color:var(--champagne);}
   .poster-like.liked svg{fill:currentColor;}
   .poster-body{padding:22px 26px 28px;}
-  .poster-category{font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--champagne); margin:0 0 8px;}
-  .poster-with{font-size:13px; color:var(--cream-dim); margin:0 0 16px;}
-  .poster-with strong{color:var(--cream); font-weight:600;}
   .poster.soldout .poster-banner{opacity:0.35;}
   .poster.soldout .poster-body > *:not(.ticket-row){opacity:0.35;}
   .poster .stamp{
@@ -177,19 +174,18 @@
     background:rgba(26,2,11,0.55);
     pointer-events:none; white-space:nowrap; z-index:3;
   }
-  .poster-loc-row{
-    display:flex; align-items:center; justify-content:space-between; gap:10px;
-    border-top:1px solid var(--line); padding-top:14px; margin-top:2px;
-    font-size:13px; color:var(--cream-dim); cursor:pointer; list-style:none;
+  .poster .meta{display:flex; flex-direction:column; gap:7px; margin-top:16px;}
+  .poster .meta span{font-size:13px; color:var(--cream-dim);}
+  .poster .meta svg{width:14px; height:14px; vertical-align:-2px; margin-right:5px; opacity:0.8;}
+  .poster details{margin-top:14px; border-top:1px solid var(--line); padding-top:14px;}
+  .poster summary{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--rose-dim); cursor:pointer; list-style:none;
   }
-  .poster-loc-row::-webkit-details-marker{display:none;}
-  .poster-loc-row svg{color:var(--champagne); width:14px; height:14px; margin-right:6px; vertical-align:-2px; opacity:1;}
-  .poster-loc-row .arrow{transition:transform 0.2s ease; color:var(--rose-dim); flex:none;}
-  .poster details[open] .poster-loc-row .arrow{transform:rotate(90deg);}
-  .poster-details-inner{padding-top:14px;}
-  .poster-details-inner .meta-line{display:flex; align-items:center; font-size:13px; color:var(--cream-dim); margin:0 0 7px;}
-  .poster-details-inner .meta-line svg{color:var(--champagne); width:14px; height:14px; margin-right:6px; flex:none;}
-  .poster-details-inner .desc{font-size:13.5px; color:var(--cream-dim); margin:10px 0 0; max-width:56ch;}
+  .poster summary::-webkit-details-marker{display:none;}
+  .poster summary::after{content:" +"; }
+  .poster details[open] summary::after{content:" −";}
+  .poster details p{font-size:13.5px; color:var(--cream-dim); margin:12px 0 0; max-width:56ch;}
   .poster .ticket-row{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;}
   .poster .ticket-btn{
     font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
@@ -705,22 +701,15 @@
       ? '<a class="ticket-btn" style="opacity:1;" href="' + waitlistUrl + '" target="_blank" rel="noopener"><span class="fr">Rejoindre la liste d\'attente</span><span class="en">Join the waitlist</span></a>'
       : '<a class="ticket-btn" href="' + ev.ticketUrl + '" target="_blank" rel="noopener"><span class="fr">Prendre un ticket</span><span class="en">Get a ticket</span></a>';
 
-    var withHtml = ev.mystery
+    var guestHtml = ev.mystery
       ? '<div class="intervenant">██████████████████</div>'
-      : '<p class="poster-with"><span class="fr">Avec <strong>' + ev.guestName + '</strong>, ' + ev.guestRoleFr + '</span>' +
-        '<span class="en">With <strong>' + ev.guestName + '</strong>, ' + ev.guestRoleEn + '</span></p>';
+      : '<p style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:17px; color:var(--cream); margin:4px 0 2px;">' + ev.guestName + '</p>' +
+        '<p style="font-size:12.5px; color:var(--rose-dim); margin:0 0 4px;"><span class="fr">' + ev.guestRoleFr + '</span><span class="en">' + ev.guestRoleEn + '</span></p>';
 
     var detailsHtml =
       '<details>' +
-        '<summary class="poster-loc-row">' +
-          '<span>' + ICON_PIN + '<span class="fr">' + ev.lieuFr + '</span><span class="en">' + ev.lieuEn + '</span></span>' +
-          '<span class="arrow">→</span>' +
-        '</summary>' +
-        '<div class="poster-details-inner">' +
-          '<p class="meta-line">' + ICON_CAL + '<span class="fr">' + ev.dateFr + '</span><span class="en">' + ev.dateEn + '</span></p>' +
-          '<p class="meta-line">' + ICON_CLOCK + '<span class="fr">' + ev.heureFr + '</span><span class="en">' + ev.heureEn + '</span></p>' +
-          '<p class="desc"><span class="fr">' + ev.descFr + '</span><span class="en">' + ev.descEn + '</span></p>' +
-        '</div>' +
+        '<summary><span class="fr">Voir plus</span><span class="en">See more</span></summary>' +
+        '<p><span class="fr">' + ev.descFr + '</span><span class="en">' + ev.descEn + '</span></p>' +
       '</details>';
 
     var badge = dateBadge(ev.startISO);
@@ -732,10 +721,14 @@
 
     var bodyHtml =
       '<div class="poster-body">' +
-        '<p class="poster-category"><span class="fr">' + ev.categorieFr + '</span><span class="en">' + ev.categorieEn + '</span></p>' +
         '<h3><span class="fr">' + ev.titreFr + '</span><span class="en">' + ev.titreEn + '</span></h3>' +
-        withHtml +
+        guestHtml +
         detailsHtml +
+        '<div class="meta">' +
+          '<span>' + ICON_CAL + '<span class="fr">' + ev.dateFr + '</span><span class="en">' + ev.dateEn + '</span></span>' +
+          '<span>' + ICON_CLOCK + '<span class="fr">' + ev.heureFr + '</span><span class="en">' + ev.heureEn + '</span></span>' +
+          '<span>' + ICON_PIN + '<span class="fr">' + ev.lieuFr + '</span><span class="en">' + ev.lieuEn + '</span></span>' +
+        '</div>' +
         '<div class="ticket-row">' + buttonsHtml + '</div>' +
       '</div>';
 
