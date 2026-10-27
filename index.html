@@ -29,6 +29,7 @@
     --rose-dim: rgba(250,248,242,0.64);
     --line: rgba(250,248,242,0.16);
     --line-strong: rgba(250,248,242,0.3);
+    --champagne: #c9a35a;
     --font-display:'Playfair Display', Georgia, serif;
     --font-body:'Inter', system-ui, -apple-system, sans-serif;
     --font-mono:'IBM Plex Mono','Courier New',monospace;
@@ -203,12 +204,20 @@
     color:var(--rose-dim); border:1px solid var(--line); border-radius:999px; padding:7px 14px;
   }
 
-  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
-  .step{background:var(--wine); padding:24px 20px;}
-  .step .step-icon{color:var(--rose-dim); opacity:0.8; margin-bottom:14px;}
-  .step .step-icon svg{width:26px; height:26px;}
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:8px;}
+  .step{
+    background:var(--wine); border:1px solid var(--line); padding:24px 22px;
+    transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .step:hover{border-color:var(--champagne); transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.35);}
+  .step-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
   .step .n{font-family:var(--font-display); font-style:italic; font-size:26px; color:var(--rose-dim);}
-  .step p{font-size:13.5px; color:var(--cream-dim); margin:10px 0 0;}
+  .step .step-icon{color:var(--rose-dim); opacity:0.85; transition:color 0.2s ease;}
+  .step:hover .step-icon{color:var(--champagne);}
+  .step .step-icon svg{width:22px; height:22px;}
+  .step .step-label{font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-dim); margin:16px 0 6px;}
+  .step .step-title{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:17px; color:var(--cream); margin:0 0 8px;}
+  .step .step-desc{font-size:13.5px; color:var(--cream-dim); margin:0;}
 
   .join{
     background:var(--wine-soft); border:1px solid var(--line);
@@ -346,23 +355,43 @@
   </section>
 
   <section>
-    <p class="eyebrow"><span class="fr">Comment ça marche</span><span class="en">How it works</span></p>
+    <p class="eyebrow"><span class="fr">Quatre temps. Une rencontre rare.</span><span class="en">Four moments. One rare encounter.</span></p>
     <div class="steps">
       <div class="step">
-        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
-        <div class="n">1</div><p><span class="fr">Inscris-toi pour être prévenu·e de la 1ère soirée</span><span class="en">Sign up to be notified of the first evening</span></p>
+        <div class="step-top">
+          <div class="n">01</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 002 2 2 2 0 012 2 2 2 0 01-2 2 2 2 0 00-2 2v1a2 2 0 002 2h14a2 2 0 002-2v-1a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v1z"/><path d="M14 4.5v2M14 11v2M14 17.5v2"/></svg></div>
+        </div>
+        <p class="step-label"><span class="fr">L'accès</span><span class="en">Access</span></p>
+        <p class="step-title"><span class="fr">Une place parmi les curieux.</span><span class="en">A seat among the curious.</span></p>
+        <p class="step-desc"><span class="fr">Inscris-toi à une soirée RARE Club et découvre qui sera notre prochain invité.</span><span class="en">Sign up for a RARE Club evening and find out who our next guest will be.</span></p>
       </div>
       <div class="step">
-        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V7a3 3 0 013-3h8a3 3 0 013 3v4"/><path d="M4 11h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z"/><path d="M6 17v3M18 17v3"/></svg></div>
-        <div class="n">2</div><p><span class="fr">Installe-toi dans le bar, une trentaine de personnes seulement</span><span class="en">Settle into the bar, only about thirty people</span></p>
+        <div class="step-top">
+          <div class="n">02</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V7a3 3 0 013-3h8a3 3 0 013 3v4"/><path d="M4 11h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z"/><path d="M6 17v3M18 17v3"/></svg></div>
+        </div>
+        <p class="step-label"><span class="fr">La rencontre</span><span class="en">The encounter</span></p>
+        <p class="step-title"><span class="fr">Un cercle à taille humaine.</span><span class="en">A circle sized for connection.</span></p>
+        <p class="step-desc"><span class="fr">Une trentaine de personnes, un lieu intimiste et une atmosphère propice aux rencontres.</span><span class="en">About thirty people, an intimate venue, an atmosphere made for meeting people.</span></p>
       </div>
       <div class="step">
-        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0014 0"/><path d="M12 17v4M9 21h6"/></svg></div>
-        <div class="n">3</div><p><span class="fr">Écoute l'invité, pose tes questions en direct</span><span class="en">Listen to the guest, ask your questions live</span></p>
+        <div class="step-top">
+          <div class="n">03</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0014 0"/><path d="M12 17v4M9 21h6"/></svg></div>
+        </div>
+        <p class="step-label"><span class="fr">La conversation</span><span class="en">The conversation</span></p>
+        <p class="step-title"><span class="fr">Des histoires qui marquent.</span><span class="en">Stories that stay with you.</span></p>
+        <p class="step-desc"><span class="fr">Écoute un parcours hors du commun, pose tes questions et découvre l'envers du décor.</span><span class="en">Listen to an extraordinary journey, ask your questions, and see behind the scenes.</span></p>
       </div>
       <div class="step">
-        <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1.2 7.2a3.8 3.8 0 01-7.6 0L7 3z"/><path d="M12 14v7M8.5 21h7"/></svg></div>
-        <div class="n">4</div><p><span class="fr">Échange autour d'un verre après, avec d'autres curieux</span><span class="en">Chat over a drink afterward, with other curious minds</span></p>
+        <div class="step-top">
+          <div class="n">04</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1.2 7.2a3.8 3.8 0 01-7.6 0L7 3z"/><path d="M12 14v7M8.5 21h7"/></svg></div>
+        </div>
+        <p class="step-label"><span class="fr">Le partage</span><span class="en">The sharing</span></p>
+        <p class="step-title"><span class="fr">La soirée continue.</span><span class="en">The evening continues.</span></p>
+        <p class="step-desc"><span class="fr">Prolonge les échanges autour d'un verre et fais de nouvelles rencontres, bien au-delà de la scène.</span><span class="en">Carry the conversation on over a drink and meet new people, well beyond the stage.</span></p>
       </div>
     </div>
   </section>
