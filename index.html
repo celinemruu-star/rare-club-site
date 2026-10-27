@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RARE Club — Conférences-interviews à Bordeaux, tous les mardis</title>
+<meta name="description" content="Chaque mardi à Bordeaux : une heure d'interview face à un profil rare (espion, astrophysicien, exorciste...), suivie d'un verre entre curieux. Chartrons, Bordeaux.">
+<link rel="canonical" href="https://rareclub.fr/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RARE Club">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://rareclub.fr/">
+<meta property="og:title" content="RARE Club — Conférences-interviews à Bordeaux, tous les mardis">
+<meta property="og:description" content="Chaque mardi à Bordeaux : une heure d'interview face à un profil rare (espion, astrophysicien, exorciste...), suivie d'un verre entre curieux.">
+<meta property="og:image" content="https://rareclub.fr/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RARE Club — Conférences-interviews à Bordeaux, tous les mardis">
+<meta name="twitter:description" content="Chaque mardi à Bordeaux : une heure d'interview face à un profil rare, suivie d'un verre entre curieux.">
+<meta name="twitter:image" content="https://rareclub.fr/favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --wine:#1a020b;
+    --wine-soft:#260c17;
+    --cream:#faf8f2;
+    --cream-dim:#e4ddcf;
+    --rose-dim: rgba(250,248,242,0.64);
+    --line: rgba(250,248,242,0.16);
+    --line-strong: rgba(250,248,242,0.3);
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:'IBM Plex Mono','Courier New',monospace;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--wine);
+    color:var(--cream);
+    font-family:var(--font-body);
+    margin:0;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+
+  /* language toggle: default shows FR, hides EN */
+  .en{display:none;}
+  body.lang-en .fr{display:none;}
+  body.lang-en .en{display:inline;}
+  body.lang-en .en.block{display:block;}
+  .fr.block{display:block;}
+
+  /* ---- nav ---- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 28px; gap:16px; flex-wrap:wrap;
+    max-width:1000px; margin:0 auto;
+  }
+  nav .left{display:flex; align-items:center; gap:14px;}
+  nav .word{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:20px;}
+  nav .city{font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--rose-dim); border:1px solid var(--line); border-radius:999px; padding:5px 12px;}
+  nav .right{display:flex; align-items:center; gap:14px;}
+  nav .social{display:flex; gap:10px;}
+  nav .social a{display:flex; opacity:0.85;}
+  nav .social a:hover{opacity:1;}
+  nav .lang-btn{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em;
+    color:var(--rose-dim); border:1px solid var(--line); border-radius:999px;
+    padding:6px 13px; background:transparent; cursor:pointer;
+  }
+  nav .lang-btn:hover{border-color:var(--line-strong); color:var(--cream);}
+
+  /* ---- hero ---- */
+  .hero{
+    background: radial-gradient(ellipse 120% 70% at 50% -10%, rgba(250,248,242,0.08), transparent 60%);
+    padding:60px 28px 56px;
+    text-align:center;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(32px,6vw,52px);
+    line-height:1.22;
+    margin:0 auto;
+    max-width:20ch;
+    text-wrap:balance;
+  }
+  .hero h1 em{font-style:italic; font-weight:500;}
+  .hero .sub{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rose-dim);
+    margin:20px 0 32px;
+  }
+  .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .cta{
+    display:inline-block;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--wine);
+    background:var(--cream);
+    border:2px solid var(--cream);
+    border-radius:999px;
+    padding:15px 32px;
+    text-decoration:none;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .cta:hover{background:var(--wine); border-color:var(--cream); color:var(--cream);}
+  .cta.ghost{background:transparent; color:var(--cream);}
+  .cta.ghost:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+
+  main{max-width:760px; margin:0 auto; padding:0 28px 100px;}
+  section{margin-top:88px;}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--rose-dim); margin:0 0 14px;
+  }
+
+  /* ---- action buttons row ---- */
+  .actions{display:flex; flex-wrap:wrap; gap:10px;}
+  .action-btn{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rose-dim); border:1px solid var(--line); border-radius:999px;
+    padding:11px 18px; text-decoration:none;
+  }
+  .action-btn:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+
+  /* ---- event poster ---- */
+  .poster-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:8px;}
+  .poster{
+    background:var(--wine-soft); border:1px solid var(--line);
+    padding:32px 28px;
+    display:flex; flex-direction:column;
+    position:relative; overflow:hidden;
+  }
+  .poster.soldout > *:not(.stamp):not(.ticket-row){opacity:0.35;}
+  .poster .stamp{
+    position:absolute; top:46%; left:50%;
+    transform:translate(-50%,-50%) rotate(-9deg);
+    font-family:var(--font-mono); font-weight:700; font-size:clamp(22px,5vw,32px);
+    letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--cream); border:3px solid var(--cream);
+    padding:8px 22px; border-radius:6px;
+    background:rgba(26,2,11,0.55);
+    pointer-events:none; white-space:nowrap;
+  }
+  .poster .tag{font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-dim);}
+  .poster .tag.soldout{color:var(--wine); background:var(--cream); padding:2px 9px; border-radius:999px; display:inline-block;}
+  .poster .ticket-row{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;}
+  .poster .ticket-btn{
+    font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--wine); background:var(--cream); border:none; border-radius:999px; padding:12px 22px; text-decoration:none; display:inline-block;
+    transition:background 0.15s, color 0.15s;
+  }
+  .poster .ticket-btn:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+  .poster .ticket-btn.ghost{background:transparent; color:var(--cream); border:1px solid var(--line-strong);}
+  .poster h3{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:clamp(24px,4vw,30px); margin:10px 0 8px; color:var(--cream); text-wrap:balance;}
+  .poster .intervenant{
+    display:inline-block; background:var(--cream); color:var(--cream);
+    padding:2px 8px; border-radius:2px; font-size:11px; font-family:var(--font-mono);
+    user-select:none; opacity:0.18; margin-bottom:18px;
+  }
+  .poster .meta{display:flex; flex-direction:column; gap:7px; margin-top:16px;}
+  .poster .meta span{font-size:13px; color:var(--cream-dim);}
+  .poster details{margin-top:14px; border-top:1px solid var(--line); padding-top:14px;}
+  .poster summary{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--rose-dim); cursor:pointer; list-style:none;
+  }
+  .poster summary::-webkit-details-marker{display:none;}
+  .poster summary::after{content:" +"; }
+  .poster details[open] summary::after{content:" −";}
+  .poster details p{font-size:13.5px; color:var(--cream-dim); margin:12px 0 0; max-width:56ch;}
+
+  .newsletter{background:var(--wine-soft); border:1px solid var(--line); padding:36px 32px; text-align:center;}
+  .newsletter h3{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:clamp(20px,3.6vw,26px); margin:0 0 10px;}
+  .newsletter p{font-size:13.5px; color:var(--rose-dim); max-width:42ch; margin:0 auto 22px;}
+  .newsletter-form{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; max-width:420px; margin:0 auto;}
+  .newsletter-form input{
+    flex:1; min-width:200px; font-family:var(--font-body); font-size:14px; color:var(--cream);
+    background:var(--wine); border:1px solid var(--line-strong); border-radius:999px;
+    padding:13px 18px;
+  }
+  .newsletter-form input::placeholder{color:var(--rose-dim);}
+  .newsletter-form button{
+    font-family:var(--font-body); font-weight:600; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--wine); background:var(--cream); border:none; border-radius:999px; padding:13px 24px; cursor:pointer;
+    transition:background 0.15s, color 0.15s;
+  }
+  .newsletter-form button:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+  .newsletter-confirm{display:none; font-size:13.5px; color:var(--cream-dim); max-width:42ch; margin:0 auto;}
+
+  .taste-label{font-size:12.5px; color:var(--rose-dim); margin:22px 0 10px;}
+  .pills{display:flex; flex-wrap:wrap; gap:9px;}
+  .pills span{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--rose-dim); border:1px solid var(--line); border-radius:999px; padding:7px 14px;
+  }
+
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
+  .step{background:var(--wine); padding:24px 20px;}
+  .step .n{font-family:var(--font-display); font-style:italic; font-size:26px; color:var(--rose-dim);}
+  .step p{font-size:13.5px; color:var(--cream-dim); margin:10px 0 0;}
+
+  .join{
+    background:var(--wine-soft); border:1px solid var(--line);
+    padding:40px 32px; text-align:center;
+  }
+  .join h2{font-family:var(--font-display); font-weight:600; font-style:italic; font-size:clamp(22px,4vw,30px); margin:0 0 10px;}
+  .join p{font-size:14px; color:var(--rose-dim); max-width:46ch; margin:0 auto 26px;}
+
+  dl.faq{margin:0;}
+  dl.faq div{border-top:1px solid var(--line); padding:20px 0;}
+  dl.faq dt{font-family:var(--font-display); font-weight:600; font-size:17px; margin:0 0 8px;}
+  dl.faq dd{margin:0; font-size:13.5px; color:var(--cream-dim); max-width:56ch;}
+
+  footer{
+    margin-top:88px; padding:26px 28px; border-top:1px solid var(--line);
+    max-width:1000px; margin-left:auto; margin-right:auto;
+    font-size:12.5px; color:var(--rose-dim);
+    display:flex; flex-direction:column; gap:16px;
+  }
+  footer .top-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  footer .fm{font-family:var(--font-mono); letter-spacing:0.04em;}
+  footer .legal-row{
+    display:flex; flex-wrap:wrap; gap:14px;
+    padding-top:14px; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase;
+  }
+  footer .legal-row button{
+    background:none; border:none; padding:0; margin:0; cursor:pointer;
+    color:var(--rose-dim); font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase;
+  }
+  footer .legal-row button:hover{color:var(--cream); text-decoration:underline;}
+
+  /* ---- legal modal ---- */
+  .legal-overlay{
+    display:none; position:fixed; inset:0; z-index:50;
+    background:rgba(10,1,5,0.72); backdrop-filter:blur(2px);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .legal-overlay.open{display:flex;}
+  .legal-modal{
+    background:var(--wine-soft); border:1px solid var(--line-strong);
+    max-width:620px; width:100%; max-height:84vh; overflow-y:auto;
+    padding:40px 36px; position:relative;
+  }
+  .legal-close{
+    position:absolute; top:18px; right:18px;
+    width:32px; height:32px; border-radius:50%;
+    background:transparent; border:1px solid var(--line); color:var(--cream);
+    font-size:16px; cursor:pointer; line-height:1;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .legal-close:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+  .legal-panel{display:none;}
+  .legal-panel.active{display:block;}
+  .legal-panel h2{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:24px; margin:0 0 18px; padding-right:30px;}
+  .legal-panel h4{font-family:var(--font-body); font-weight:600; font-size:13px; letter-spacing:0.04em; margin:22px 0 8px; color:var(--cream);}
+  .legal-panel p, .legal-panel li{font-size:13.5px; color:var(--cream-dim); margin:0 0 10px;}
+  .legal-panel ul{margin:0 0 10px; padding-left:20px;}
+  .legal-panel a.inline{text-decoration:underline; color:var(--cream);}
+  .cookie-row{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin:14px 0;
+  }
+  .cookie-row .ct{font-size:13px; color:var(--cream);}
+  .cookie-row .cd{font-size:12px; color:var(--rose-dim); margin-top:2px;}
+  .switch{position:relative; width:42px; height:24px; flex:none;}
+  .switch input{opacity:0; width:0; height:0;}
+  .switch .track{
+    position:absolute; inset:0; background:var(--line-strong); border-radius:999px; cursor:pointer;
+    transition:background 0.15s;
+  }
+  .switch .track::before{
+    content:""; position:absolute; width:18px; height:18px; left:3px; top:3px;
+    background:var(--cream); border-radius:50%; transition:transform 0.15s;
+  }
+  .switch input:checked + .track{background:var(--cream-dim);}
+  .switch input:checked + .track::before{transform:translateX(18px); background:var(--wine);}
+  .cookie-save{
+    margin-top:10px; font-family:var(--font-body); font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--wine); background:var(--cream); border:none; border-radius:999px; padding:12px 22px; cursor:pointer;
+    transition:background 0.15s, color 0.15s;
+  }
+  .cookie-save:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+  .cookie-confirm{font-size:12px; color:var(--rose-dim); margin-top:10px; display:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="left">
+    <span class="word">RARE Club</span>
+    <span class="city">Bordeaux</span>
+  </div>
+  <div class="right">
+    <div class="social">
+      <a href="https://www.instagram.com/rareclubfr/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@rareclubfr" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2h3.1c.2 1.6 1.2 3 2.7 3.7v3.2c-1.5 0-2.9-.4-4.1-1.3v6.6c0 3.5-2.8 6.3-6.3 6.3S3.6 17.7 3.6 14.2c0-3.4 2.7-6.2 6.1-6.3v3.3c-1.6.1-2.9 1.5-2.9 3.1 0 1.7 1.4 3.1 3.1 3.1s3.1-1.4 3.1-3.1V2z"/></svg>
+      </a>
+    </div>
+    <button class="lang-btn" id="langToggle" type="button">EN</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>
+    <span class="fr">Un vécu rare.<br>Un sujet de société.<br><em>Une vraie conversation.</em></span>
+    <span class="en">A rare story.<br>A real subject.<br><em>An actual conversation.</em></span>
+  </h1>
+  <div class="sub">
+    <span class="fr">Tous les mardis · Chartrons, Bordeaux</span>
+    <span class="en">Every Tuesday · Chartrons, Bordeaux</span>
+  </div>
+  <div class="cta-row">
+    <a class="cta" href="/inscription.html" target="_blank" rel="noopener">
+      <span class="fr">Être prévenu·e du lancement</span><span class="en">Get notified at launch</span>
+    </a>
+    <a class="cta ghost" href="#events">
+      <span class="fr">Événements à venir</span><span class="en">Upcoming events</span>
+    </a>
+  </div>
+</div>
+
+<main>
+
+  <section id="events">
+    <p class="eyebrow"><span class="fr">Événements à venir — tous les mardis</span><span class="en">Upcoming events — every Tuesday</span></p>
+    <div class="poster-grid" id="posterGrid"></div>
+    <p class="taste-label"><span class="fr">Pour te donner une idée du genre de profils :</span><span class="en">To give you an idea of the kind of profiles:</span></p>
+    <div class="pills">
+      <span><span class="fr">Ancien espion</span><span class="en">Former spy</span></span><span><span class="fr">Exorciste</span><span class="en">Exorcist</span></span><span><span class="fr">Astrophysicien</span><span class="en">Astrophysicist</span></span><span><span class="fr">Survivant de catastrophe</span><span class="en">Disaster survivor</span></span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="fr">Comment ça marche</span><span class="en">How it works</span></p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><p><span class="fr">Inscris-toi pour être prévenu·e de la 1ère soirée</span><span class="en">Sign up to be notified of the first evening</span></p></div>
+      <div class="step"><div class="n">2</div><p><span class="fr">Installe-toi dans le bar, une trentaine de personnes seulement</span><span class="en">Settle into the bar, only about thirty people</span></p></div>
+      <div class="step"><div class="n">3</div><p><span class="fr">Écoute l'invité, pose tes questions en direct</span><span class="en">Listen to the guest, ask your questions live</span></p></div>
+      <div class="step"><div class="n">4</div><p><span class="fr">Échange autour d'un verre après, avec d'autres curieux</span><span class="en">Chat over a drink afterward, with other curious minds</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="fr">Participer autrement</span><span class="en">Get involved</span></p>
+    <div class="actions">
+      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20veux%20devenir%20intervenant">
+        <span class="fr">Je veux devenir intervenant</span><span class="en">I want to be a speaker</span>
+      </a>
+      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20propose%20un%20sujet">
+        <span class="fr">Je propose un sujet</span><span class="en">I'd like to suggest a topic</span>
+      </a>
+      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20mon%20bar">
+        <span class="fr">Je veux RARE Club dans mon bar</span><span class="en">I want RARE Club in my bar</span>
+      </a>
+      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20ma%20ville">
+        <span class="fr">Je veux RARE Club dans ma ville</span><span class="en">I want RARE Club in my city</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="join">
+    <h2><span class="fr">On lance bientôt à Bordeaux.</span><span class="en">Launching soon in Bordeaux.</span></h2>
+    <p><span class="fr">Laisse ton mail pour être prévenu·e en premier.</span><span class="en">Leave your email to be the first notified.</span></p>
+    <a class="cta" href="/inscription.html" target="_blank" rel="noopener">
+      <span class="fr">Être prévenu·e du lancement</span><span class="en">Get notified at launch</span>
+    </a>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="fr">Questions fréquentes</span><span class="en">FAQ</span></p>
+    <dl class="faq">
+      <div><dt><span class="fr">Où et quand ?</span><span class="en">Where and when?</span></dt><dd><span class="fr">Tous les mardis, dans le quartier des Chartrons à Bordeaux — adresse précise communiquée aux inscrit·e·s.</span><span class="en">Every Tuesday, in the Chartrons district of Bordeaux — exact address shared with registrants.</span></dd></div>
+      <div><dt><span class="fr">Seul·e ou accompagné·e ?</span><span class="en">Alone or with someone?</span></dt><dd><span class="fr">Les deux : on vient pour rencontrer d'autres curieux.</span><span class="en">Either works: it's a good place to meet other curious people.</span></dd></div>
+      <div><dt><span class="fr">Qui anime ?</span><span class="en">Who hosts it?</span></dt><dd>Céline Moreau, <span class="fr">journaliste TV.</span><span class="en">TV journalist.</span></dd></div>
+      <div><dt><span class="fr">Ça dure combien de temps ?</span><span class="en">How long does it last?</span></dt><dd><span class="fr">Environ une heure d'interview, suivie d'un temps d'échange autour d'un verre.</span><span class="en">About an hour of interview, followed by drinks and conversation.</span></dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="newsletter">
+      <h3><span class="fr">Newsletter</span><span class="en">Newsletter</span></h3>
+      <p id="newsletterIntro"><span class="fr">Inscris-toi pour être prévenu·e des prochaines soirées et profiter de bons plans en exclusivité.</span><span class="en">Sign up to hear about upcoming evenings and get exclusive perks first.</span></p>
+      <form class="newsletter-form" id="newsletterForm" method="POST" action="https://89faf299.sibforms.com/serve/MUIFACzrVwj-rQy_5fBzB1GBo64ijIVJ-kvEx4YNniVCf29tQ-5zLtXAGa2g3CUq0_LBBCrGIywA2ove79E2m84oRQhg8aELvqI7O0fT1iYEiwvPoVTrulnZZmjT8PpcSelRIO8ucRKGgDtlhgbL_aTUO46YVBXFTAoQP3u3j6iEQlH4QHkjOPWsTmkjXdE33djfOPjIx2iJhv1YaA==" target="brevoFrame">
+        <input type="email" id="newsletterEmail" name="EMAIL" placeholder="Email" required>
+        <input type="text" name="email_address_check" value="" style="position:absolute; left:-9999px; width:1px; height:1px;" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="locale" value="fr">
+        <button type="submit"><span class="fr">S'inscrire</span><span class="en">Subscribe</span></button>
+      </form>
+      <p class="newsletter-confirm" id="newsletterConfirm"><span class="fr">C'est noté — vérifie ta boîte mail pour confirmer ton inscription.</span><span class="en">Got it — check your inbox to confirm your subscription.</span></p>
+      <iframe name="brevoFrame" style="display:none;" title="newsletter"></iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="top-row">
+    <span class="fm">RARE Club — Bordeaux</span>
+    <span>contact.rareclub@gmail.com · <a href="https://www.instagram.com/rareclubfr/" target="_blank" rel="noopener" style="text-decoration:underline;">@rareclubfr</a> · <a href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20suis%20un%20profil%20rare" style="text-decoration:underline;"><span class="fr">tu es un profil rare ? écris-moi</span><span class="en">are you a rare profile? write to me</span></a></span>
+  </div>
+  <div class="legal-row">
+    <button type="button" data-legal="cgv"><span class="fr">Conditions générales de vente</span><span class="en">Terms of sale</span></button>
+    <button type="button" data-legal="privacy"><span class="fr">Confidentialité</span><span class="en">Privacy</span></button>
+    <button type="button" data-legal="cancel"><span class="fr">Annuler ma place</span><span class="en">Cancel my booking</span></button>
+    <button type="button" data-legal="contact"><span class="fr">Contact</span><span class="en">Contact</span></button>
+    <button type="button" data-legal="cookies"><span class="fr">Gérer les cookies</span><span class="en">Manage cookies</span></button>
+  </div>
+</footer>
+
+<div class="legal-overlay" id="legalOverlay">
+  <div class="legal-modal">
+    <button class="legal-close" id="legalClose" aria-label="Fermer">×</button>
+
+    <div class="legal-panel" data-panel="cgv">
+      <h2><span class="fr">Conditions générales de vente</span><span class="en">Terms of sale</span></h2>
+      <p><span class="fr">Dernière mise à jour : octobre 2026.</span><span class="en">Last updated: October 2026.</span></p>
+
+      <h4><span class="fr">1. Qui organise les soirées</span><span class="en">1. Who organizes the evenings</span></h4>
+      <p><span class="fr">RARE Club est un événement organisé par Céline Moreau, à Bordeaux. Les soirées ont lieu dans un bar partenaire, chaque mardi, dans la limite des places disponibles.</span><span class="en">RARE Club is an event organized by Céline Moreau, in Bordeaux. Evenings take place in a partner bar, every Tuesday, within the limit of available seats.</span></p>
+
+      <h4><span class="fr">2. Billets</span><span class="en">2. Tickets</span></h4>
+      <p><span class="fr">Les billets sont vendus via la billetterie en ligne HelloAsso. L'achat d'un billet donne accès à une soirée, à une date et une heure précises. Le nombre de places est limité ; une fois complet, l'événement passe en liste d'attente.</span><span class="en">Tickets are sold via the HelloAsso online ticketing platform. Buying a ticket gives access to one evening, at a set date and time. The number of seats is limited; once sold out, the event moves to a waitlist.</span></p>
+
+      <h4><span class="fr">3. Prix et paiement</span><span class="en">3. Price and payment</span></h4>
+      <p><span class="fr">Le prix du billet est indiqué avant le paiement. Le règlement est sécurisé et géré directement par HelloAsso ; RARE Club ne reçoit ni ne stocke aucune donnée bancaire.</span><span class="en">The ticket price is shown before payment. Payment is secure and handled directly by HelloAsso; RARE Club never receives or stores any banking details.</span></p>
+
+      <h4><span class="fr">4. Annulation et remboursement</span><span class="en">4. Cancellation and refunds</span></h4>
+      <p><span class="fr">Tu peux annuler ta place jusqu'à 48h avant la soirée pour un remboursement intégral. Passé ce délai, le billet n'est plus remboursable, mais il peut être transféré à une autre personne — écris-nous pour l'organiser. Voir la rubrique « Annuler ma place » ci-dessous.</span><span class="en">You can cancel your booking up to 48h before the evening for a full refund. After that, the ticket is non-refundable but can be transferred to someone else — write to us to arrange it. See "Cancel my booking" below.</span></p>
+
+      <h4><span class="fr">5. Si la soirée est annulée par RARE Club</span><span class="en">5. If the evening is cancelled by RARE Club</span></h4>
+      <p><span class="fr">En cas d'annulation ou de report à notre initiative (indisponibilité de l'invité, force majeure), tous les billets sont intégralement remboursés ou, si tu préfères, reportés vers une prochaine date.</span><span class="en">If we cancel or reschedule an evening (guest unavailability, force majeure), all tickets are fully refunded or, if you prefer, transferred to a future date.</span></p>
+    </div>
+
+    <div class="legal-panel" data-panel="privacy">
+      <h2><span class="fr">Confidentialité</span><span class="en">Privacy policy</span></h2>
+      <p><span class="fr">Dernière mise à jour : octobre 2026.</span><span class="en">Last updated: October 2026.</span></p>
+
+      <h4><span class="fr">Quelles données on collecte</span><span class="en">What data we collect</span></h4>
+      <p><span class="fr">Quand tu t'inscris à la newsletter, à la liste d'attente ou que tu achètes un billet, on collecte : prénom, nom, email et parfois numéro de téléphone. C'est tout.</span><span class="en">When you sign up for the newsletter, the waitlist, or buy a ticket, we collect: first name, last name, email, and sometimes phone number. That's it.</span></p>
+
+      <h4><span class="fr">Pourquoi</span><span class="en">Why</span></h4>
+      <ul>
+        <li><span class="fr">Te prévenir des prochaines soirées</span><span class="en">To notify you about upcoming evenings</span></li>
+        <li><span class="fr">Gérer ta réservation ou ta place en liste d'attente</span><span class="en">To manage your booking or waitlist spot</span></li>
+        <li><span class="fr">T'envoyer la newsletter, si tu t'y es inscrit·e</span><span class="en">To send you the newsletter, if you signed up for it</span></li>
+      </ul>
+      <p><span class="fr">On ne vend ni ne partage jamais tes données avec un tiers à des fins commerciales.</span><span class="en">We never sell or share your data with a third party for commercial purposes.</span></p>
+
+      <h4><span class="fr">Qui y a accès</span><span class="en">Who has access</span></h4>
+      <p><span class="fr">Seule l'équipe RARE Club. Le paiement des billets est géré par HelloAsso, qui a sa propre politique de confidentialité.</span><span class="en">Only the RARE Club team. Ticket payment is handled by HelloAsso, which has its own privacy policy.</span></p>
+
+      <h4><span class="fr">Tes droits</span><span class="en">Your rights</span></h4>
+      <p><span class="fr">Conformément au RGPD, tu peux à tout moment demander l'accès, la correction ou la suppression de tes données en écrivant à <a class="inline" href="mailto:contact.rareclub@gmail.com">contact.rareclub@gmail.com</a>.</span><span class="en">In accordance with GDPR, you can request access to, correction of, or deletion of your data at any time by writing to <a class="inline" href="mailto:contact.rareclub@gmail.com">contact.rareclub@gmail.com</a>.</span></p>
+    </div>
+
+    <div class="legal-panel" data-panel="cancel">
+      <h2><span class="fr">Annuler ma place</span><span class="en">Cancel my booking</span></h2>
+      <p><span class="fr">Un empêchement ? Pas de souci.</span><span class="en">Something came up? No worries.</span></p>
+      <h4><span class="fr">Plus de 48h avant la soirée</span><span class="en">More than 48h before the evening</span></h4>
+      <p><span class="fr">Écris-nous à <a class="inline" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Annulation%20de%20ma%20place">contact.rareclub@gmail.com</a> avec ton nom et la date de la soirée : ta place est remboursée intégralement sous quelques jours.</span><span class="en">Write to us at <a class="inline" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Cancel%20my%20booking">contact.rareclub@gmail.com</a> with your name and the evening's date: your ticket is fully refunded within a few days.</span></p>
+      <h4><span class="fr">Moins de 48h avant la soirée</span><span class="en">Less than 48h before the evening</span></h4>
+      <p><span class="fr">Le billet n'est plus remboursable, mais tu peux le céder à quelqu'un d'autre — préviens-nous simplement du nom de la personne qui vient à ta place.</span><span class="en">The ticket is no longer refundable, but you can pass it on to someone else — just let us know who's coming in your place.</span></p>
+    </div>
+
+    <div class="legal-panel" data-panel="contact">
+      <h2><span class="fr">Contact</span><span class="en">Contact</span></h2>
+      <p><span class="fr">Une question, une idée, un profil rare à nous signaler ?</span><span class="en">A question, an idea, a rare profile to suggest?</span></p>
+      <p>📧 <a class="inline" href="mailto:contact.rareclub@gmail.com">contact.rareclub@gmail.com</a></p>
+      <p>📷 <a class="inline" href="https://www.instagram.com/rareclubfr/" target="_blank" rel="noopener">@rareclubfr</a></p>
+      <p>🎵 <a class="inline" href="https://www.tiktok.com/@rareclubfr" target="_blank" rel="noopener">@rareclubfr</a> <span class="fr">(TikTok)</span></p>
+    </div>
+
+    <div class="legal-panel" data-panel="cookies">
+      <h2><span class="fr">Gérer les cookies</span><span class="en">Manage cookies</span></h2>
+      <p><span class="fr">Ce site n'utilise aucun cookie publicitaire. Voici les deux seules catégories possibles :</span><span class="en">This site uses no advertising cookies. Here are the only two possible categories:</span></p>
+
+      <div class="cookie-row">
+        <div>
+          <div class="ct"><span class="fr">Essentiels</span><span class="en">Essential</span></div>
+          <div class="cd"><span class="fr">Nécessaires au fonctionnement du site (ex. choix de langue). Toujours actifs.</span><span class="en">Required for the site to work (e.g. language choice). Always on.</span></div>
+        </div>
+        <label class="switch"><input type="checkbox" checked disabled><span class="track"></span></label>
+      </div>
+
+      <div class="cookie-row">
+        <div>
+          <div class="ct"><span class="fr">Mesure d'audience</span><span class="en">Audience measurement</span></div>
+          <div class="cd"><span class="fr">Nous aide à comprendre la fréquentation du site. Désactivé par défaut.</span><span class="en">Helps us understand site traffic. Off by default.</span></div>
+        </div>
+        <label class="switch"><input type="checkbox" id="cookieAnalytics"><span class="track"></span></label>
+      </div>
+
+      <button class="cookie-save" type="button" id="cookieSave"><span class="fr">Enregistrer mes préférences</span><span class="en">Save my preferences</span></button>
+      <p class="cookie-confirm" id="cookieConfirm"><span class="fr">Préférences enregistrées.</span><span class="en">Preferences saved.</span></p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.getElementById('langToggle').addEventListener('click', function(){
+    var isEn = document.body.classList.toggle('lang-en');
+    this.textContent = isEn ? 'FR' : 'EN';
+  });
+
+  /* Newsletter : le formulaire poste directement vers la liste Brevo
+     (cible un iframe caché pour rester sur le site), puis on affiche
+     une confirmation inline — pas de redirection vers Brevo. */
+  document.getElementById('newsletterForm').addEventListener('submit', function(){
+    var form = document.getElementById('newsletterForm');
+    var intro = document.getElementById('newsletterIntro');
+    var confirm = document.getElementById('newsletterConfirm');
+    setTimeout(function(){
+      form.style.display = 'none';
+      intro.style.display = 'none';
+      confirm.style.display = 'block';
+    }, 500);
+  });
+
+  /* ---- mentions légales : modal ---- */
+  var legalOverlay = document.getElementById('legalOverlay');
+  var legalPanels = document.querySelectorAll('.legal-panel');
+  document.querySelectorAll('[data-legal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = btn.getAttribute('data-legal');
+      legalPanels.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-panel') === target); });
+      legalOverlay.classList.add('open');
+    });
+  });
+  document.getElementById('legalClose').addEventListener('click', function(){
+    legalOverlay.classList.remove('open');
+  });
+  legalOverlay.addEventListener('click', function(e){
+    if (e.target === legalOverlay) legalOverlay.classList.remove('open');
+  });
+
+  /* cookies : préférence stockée localement sur l'appareil du visiteur */
+  try {
+    var saved = JSON.parse(localStorage.getItem('rareClubCookiePrefs') || '{}');
+    if (saved.analytics) document.getElementById('cookieAnalytics').checked = true;
+  } catch(e){}
+  document.getElementById('cookieSave').addEventListener('click', function(){
+    var analytics = document.getElementById('cookieAnalytics').checked;
+    try { localStorage.setItem('rareClubCookiePrefs', JSON.stringify({analytics:analytics})); } catch(e){}
+    document.getElementById('cookieConfirm').style.display = 'block';
+  });
+
+  /* Un événement par mois. Pour en ajouter : copie un bloc {...} ci-dessous.
+     Pour marquer complet : passe soldOut à true (le bouton billet est alors
+     remplacé par "Complet" + "Rejoindre la liste d'attente").
+     ticketUrl : mets ton vrai lien HelloAsso par événement dès qu'il existe. */
+  var EVENTS = [
+    {
+      dateFr: "Mardi 3 novembre 2026", dateEn: "Tuesday, November 3, 2026",
+      heureFr: "19h00", heureEn: "7:00 PM",
+      startISO: "2026-11-03T19:00:00+01:00",
+      lieuFr: "Chartrons, Bordeaux — adresse communiquée aux inscrit·e·s",
+      lieuEn: "Chartrons, Bordeaux — address shared with registrants",
+      titreFr: "Quelles sont les dernières découvertes dans l'espace ?",
+      titreEn: "What are the latest discoveries in space?",
+      mystery: false,
+      guestName: "Franck Selsis",
+      guestRoleFr: "Directeur de recherche CNRS au laboratoire d'astrophysique de Bordeaux",
+      guestRoleEn: "CNRS Research Director at the Bordeaux Astrophysics Laboratory",
+      descFr: "Physicien, astrophysicien, spécialiste des exoplanètes et des atmosphères, Franck Selsis a participé à la première détection d'une molécule dans l'atmosphère d'une exoplanète, à la première découverte d'une exoplanète rocheuse potentiellement habitable (Kepler-186 f), et à l'étude des sept planètes de type terrestre qui orbitent autour de l'étoile Trappist-1. Il a été plusieurs fois primé : lauréat d'une bourse du Conseil européen de la recherche (ERC), du prix Chercheur de l'année en Aquitaine et du prix Louis D. de la Fondation Charles Defforey-Institut de France. Aujourd'hui, Franck Selsis est impliqué dans la prochaine mission Ariel de l'ESA (Agence spatiale européenne), sur l'observation des exoplanètes, et travaille en tant qu'expert pour le CNES. Il mène des recherches dans trois domaines : les conditions d'habitabilité des planètes (origine, évolution et diversité des atmosphères planétaires) ; la recherche d'exoplanètes de type terrestre ; et la Terre primitive, pour découvrir le passé de la Terre il y a 4,5 milliards d'années, les premières traces de vie et la formation de l'atmosphère — une recherche qui mêle géologie, climatologie et astronomie.",
+      descEn: "A physicist and astrophysicist specializing in exoplanets and atmospheres, Franck Selsis took part in the first-ever detection of a molecule in an exoplanet's atmosphere, the first discovery of a potentially habitable rocky exoplanet (Kepler-186f), and the study of the seven Earth-sized planets orbiting the star TRAPPIST-1. He has received several awards, including a European Research Council (ERC) grant, the Aquitaine Researcher of the Year award, and the Louis D. Prize from the Fondation Charles Defforey-Institut de France. He is now involved in ESA's upcoming Ariel mission on exoplanet observation, and works as an expert for CNES, the French space agency. His research spans three areas: planetary habitability (the origin, evolution and diversity of planetary atmospheres); the search for Earth-type exoplanets; and the primitive Earth, uncovering its past 4.5 billion years ago, the earliest traces of life, and the formation of the atmosphere — research blending geology, climatology and astronomy.",
+      soldOut: false,
+      ticketUrl: "/billetterie.html"
+    },
+    {
+      dateFr: "Mardi 10 novembre 2026", dateEn: "Tuesday, November 10, 2026",
+      heureFr: "19h00", heureEn: "7:00 PM",
+      startISO: "2026-11-10T19:00:00+01:00",
+      lieuFr: "Chartrons, Bordeaux — adresse communiquée aux inscrit·e·s",
+      lieuEn: "Chartrons, Bordeaux — address shared with registrants",
+      titreFr: "Un parcours qui sort de l'ordinaire.", titreEn: "A life story out of the ordinary.",
+      mystery: true,
+      descFr: "Deuxième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
+      descEn: "Second evening of the RARE Club cycle. Guest details will be revealed a few weeks before the date.",
+      soldOut: true,
+      ticketUrl: "mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20R%C3%A9server%20ma%20place%20(10%20d%C3%A9c.)"
+    },
+    {
+      dateFr: "Mardi 17 novembre 2026", dateEn: "Tuesday, November 17, 2026",
+      heureFr: "19h00", heureEn: "7:00 PM",
+      startISO: "2026-11-17T19:00:00+01:00",
+      lieuFr: "Chartrons, Bordeaux — adresse communiquée aux inscrit·e·s",
+      lieuEn: "Chartrons, Bordeaux — address shared with registrants",
+      titreFr: "Quelqu'un qui a vu ce qu'on ne voit jamais.", titreEn: "Someone who has seen what you never get to see.",
+      mystery: true,
+      descFr: "Troisième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
+      descEn: "Third evening of the RARE Club cycle. Guest details will be revealed a few weeks before the date.",
+      soldOut: false,
+      ticketUrl: "mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20R%C3%A9server%20ma%20place%20(14%20janv.)"
+    }
+  ];
+
+  var waitlistUrl = "/liste-attente.html";
+
+  var grid = document.getElementById('posterGrid');
+  EVENTS.forEach(function(ev){
+    var card = document.createElement('div');
+    card.className = 'poster' + (ev.soldOut ? ' soldout' : '');
+    var stampHtml = ev.soldOut ? '<div class="stamp"><span class="fr">Complet</span><span class="en">Sold out</span></div>' : '';
+    var buttonsHtml = ev.soldOut
+      ? '<a class="ticket-btn" style="opacity:1;" href="' + waitlistUrl + '" target="_blank" rel="noopener"><span class="fr">Rejoindre la liste d\'attente</span><span class="en">Join the waitlist</span></a>'
+      : '<a class="ticket-btn" href="' + ev.ticketUrl + '" target="_blank" rel="noopener"><span class="fr">Prendre un ticket</span><span class="en">Get a ticket</span></a>';
+
+    var guestHtml = ev.mystery
+      ? '<div class="intervenant">██████████████████</div>'
+      : '<p style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:17px; color:var(--cream); margin:4px 0 2px;">' + ev.guestName + '</p>' +
+        '<p style="font-size:12.5px; color:var(--rose-dim); margin:0 0 4px;"><span class="fr">' + ev.guestRoleFr + '</span><span class="en">' + ev.guestRoleEn + '</span></p>';
+
+    var detailsHtml =
+      '<details>' +
+        '<summary><span class="fr">Voir plus</span><span class="en">See more</span></summary>' +
+        '<p><span class="fr">' + ev.descFr + '</span><span class="en">' + ev.descEn + '</span></p>' +
+      '</details>';
+
+    card.innerHTML =
+      '<span class="tag' + (ev.soldOut ? ' soldout' : '') + '">' +
+        (ev.soldOut
+          ? '<span class="fr">Complet</span><span class="en">Sold out</span>'
+          : '<span class="fr">Bientôt</span><span class="en">Coming soon</span>') +
+      '</span>' +
+      '<h3><span class="fr">' + ev.titreFr + '</span><span class="en">' + ev.titreEn + '</span></h3>' +
+      guestHtml +
+      detailsHtml +
+      '<div class="meta">' +
+        '<span>📅 <span class="fr">' + ev.dateFr + '</span><span class="en">' + ev.dateEn + '</span></span>' +
+        '<span>🕐 <span class="fr">' + ev.heureFr + '</span><span class="en">' + ev.heureEn + '</span></span>' +
+        '<span>📍 <span class="fr">' + ev.lieuFr + '</span><span class="en">' + ev.lieuEn + '</span></span>' +
+      '</div>' +
+      stampHtml +
+      '<div class="ticket-row">' + buttonsHtml + '</div>';
+    grid.appendChild(card);
+  });
+
+  /* Schema.org structured data, pour que Google affiche les soirées
+     comme des événements enrichis (date, lieu, billet) dans les résultats. */
+  function absoluteUrl(url){
+    return /^(https?:|mailto:)/i.test(url) ? url : "https://rareclub.fr" + url;
+  }
+  var eventsLd = EVENTS.map(function(ev){
+    var node = {
+      "@type": "Event",
+      "name": ev.titreFr,
+      "startDate": ev.startISO,
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": ev.soldOut ? "https://schema.org/EventScheduled" : "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "RARE Club Bordeaux",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bordeaux",
+          "addressRegion": "Chartrons",
+          "addressCountry": "FR"
+        }
+      },
+      "description": ev.descFr,
+      "organizer": {
+        "@type": "Organization",
+        "name": "RARE Club",
+        "url": "https://rareclub.fr/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": absoluteUrl(ev.soldOut ? waitlistUrl : ev.ticketUrl),
+        "availability": ev.soldOut ? "https://schema.org/SoldOut" : "https://schema.org/InStock"
+      }
+    };
+    if (!ev.mystery) {
+      node.performer = { "@type": "Person", "name": ev.guestName };
+    }
+    return node;
+  });
+  var ldScript = document.createElement('script');
+  ldScript.type = 'application/ld+json';
+  ldScript.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": eventsLd
+  });
+  document.head.appendChild(ldScript);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billetterie — RARE Club Bordeaux</title>
+<meta name="description" content="Réserve ta place pour la soirée RARE Club avec Franck Selsis, astrophysicien au CNRS, le mardi 3 novembre à Bordeaux. Places limitées.">
+<link rel="canonical" href="https://rareclub.fr/billetterie.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RARE Club">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://rareclub.fr/billetterie.html">
+<meta property="og:title" content="Billetterie — RARE Club Bordeaux">
+<meta property="og:description" content="Réserve ta place pour la soirée RARE Club avec Franck Selsis, astrophysicien au CNRS, le mardi 3 novembre à Bordeaux.">
+<meta property="og:image" content="https://rareclub.fr/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --wine:#1a020b;
+    --wine-soft:#260c17;
+    --cream:#faf8f2;
+    --cream-dim:#e4ddcf;
+    --rose-dim: rgba(250,248,242,0.64);
+    --line: rgba(250,248,242,0.16);
+    --line-strong: rgba(250,248,242,0.3);
+    --font-display:'Playfair Display', Georgia, serif;
+    --font-body:'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono:'IBM Plex Mono','Courier New',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--wine); color:var(--cream); font-family:var(--font-body); margin:0; line-height:1.55;}
+  a{color:inherit;}
+
+  nav{display:flex; align-items:center; justify-content:space-between; padding:22px 28px; max-width:620px; margin:0 auto;}
+  nav .word{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:20px;}
+  nav .step{font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-dim);}
+  nav .back{
+    display:flex; align-items:center; gap:6px;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--rose-dim); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:6px 13px;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  nav .back:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+
+  main{max-width:620px; margin:0 auto; padding:20px 28px 100px;}
+
+  .event-card{
+    display:flex; gap:16px; align-items:flex-start;
+    background:var(--wine-soft); border:1px solid var(--line);
+    padding:22px; margin-bottom:20px;
+  }
+  .event-card .thumb{
+    width:64px; height:64px; flex:none; border-radius:6px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(250,248,242,0.12), transparent 60%),
+      linear-gradient(160deg, var(--wine), var(--wine-soft));
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-style:italic; font-size:24px; color:var(--rose-dim);
+  }
+  .event-card h2{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:19px; margin:0 0 6px; color:var(--cream); text-wrap:balance;}
+  .event-card .guest{font-size:13px; color:var(--rose-dim); margin:0 0 10px;}
+  .event-card .meta{display:flex; flex-direction:column; gap:4px;}
+  .event-card .meta span{font-size:12.5px; color:var(--cream-dim);}
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--rose-dim); margin:0 0 14px;
+  }
+
+  .other-events{margin-bottom:32px; border:1px solid var(--line); padding:4px 16px;}
+  .other-events summary{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--rose-dim); cursor:pointer; list-style:none; padding:14px 0;
+  }
+  .other-events summary::-webkit-details-marker{display:none;}
+  .other-events summary::after{content:" +"; }
+  .other-events[open] summary::after{content:" −";}
+  .other-events .inner{padding-bottom:14px;}
+  .other-card{border:1px solid var(--line); margin-bottom:10px;}
+  .other-card summary{
+    display:flex; justify-content:space-between; align-items:center; gap:14px;
+    padding:14px 16px; cursor:pointer; list-style:none;
+  }
+  .other-card summary::-webkit-details-marker{display:none;}
+  .other-card:hover summary{border-color:var(--line-strong);}
+  .other-card .ti{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:14.5px; margin:0 0 4px; text-wrap:balance;}
+  .other-card .dt{font-family:var(--font-mono); font-size:11px; color:var(--rose-dim);}
+  .other-card .arrow{flex:none; font-size:14px; color:var(--rose-dim); transition:transform 0.15s;}
+  .other-card[open] .arrow{transform:rotate(90deg);}
+  .other-card .panel{padding:0 16px 16px; border-top:1px solid var(--line); margin-top:2px;}
+  .other-card .panel p{font-size:12.5px; color:var(--cream-dim); margin:12px 0 14px;}
+  .other-card .panel a{
+    display:inline-block; font-family:var(--font-body); font-weight:600; font-size:11.5px;
+    letter-spacing:0.08em; text-transform:uppercase; text-decoration:none;
+    color:var(--wine); background:var(--cream); border-radius:999px; padding:10px 18px;
+    transition:background 0.15s, color 0.15s;
+  }
+  .other-card .panel a:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+
+  .qty-row{
+    display:flex; align-items:center; justify-content:space-between;
+    border:1px solid var(--line); padding:18px 20px; margin-bottom:20px;
+  }
+  .qty-row .label{font-size:14px;}
+  .qty-row .label small{display:block; font-family:var(--font-mono); font-size:11px; color:var(--rose-dim); margin-top:3px;}
+  .stepper{display:flex; align-items:center; gap:14px;}
+  .stepper button{
+    width:30px; height:30px; border-radius:50%; border:1px solid var(--line-strong);
+    background:transparent; color:var(--cream); font-size:16px; cursor:pointer; line-height:1;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .stepper button:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+  .stepper span{font-family:var(--font-mono); min-width:16px; text-align:center;}
+
+  .summary{border-top:1px solid var(--line); padding-top:18px; margin-bottom:28px;}
+  .summary .row{display:flex; justify-content:space-between; font-size:13.5px; color:var(--cream-dim); margin-bottom:10px;}
+  .summary .row.total{border-top:1px solid var(--line); padding-top:14px; margin-top:4px; font-size:16px; color:var(--cream); font-family:var(--font-display); font-style:italic; font-weight:600;}
+
+  .pay-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; font-family:var(--font-body); font-weight:600; font-size:13px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--wine); background:var(--cream); border:2px solid var(--cream); border-radius:999px;
+    padding:17px; cursor:pointer;
+    transition:background 0.15s, color 0.15s;
+  }
+  .pay-btn:hover{background:var(--wine); color:var(--cream);}
+  .secure-note{
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    font-family:var(--font-mono); font-size:11px; color:var(--rose-dim);
+    margin-top:14px; text-align:center;
+  }
+  .secure-note svg{flex:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="word">RARE Club</span>
+  <a class="back" href="/">← Retour</a>
+</nav>
+
+<main>
+
+  <div class="event-card">
+    <div class="thumb">R.</div>
+    <div>
+      <h2>Quelles sont les dernières découvertes dans l'espace ?</h2>
+      <p class="guest">Avec Franck Selsis — Directeur de recherche CNRS</p>
+      <div class="meta">
+        <span>📅 Mardi 3 novembre 2026</span>
+        <span>🕐 19h00</span>
+        <span>📍 Chartrons, Bordeaux</span>
+      </div>
+    </div>
+  </div>
+
+  <details class="other-events">
+    <summary>D'autres soirées à venir</summary>
+    <div class="inner">
+      <details class="other-card">
+        <summary>
+          <div>
+            <p class="ti">Un parcours qui sort de l'ordinaire.</p>
+            <span class="dt">📅 Mardi 10 novembre 2026 · 19h00</span>
+          </div>
+          <span class="arrow">›</span>
+        </summary>
+        <div class="panel">
+          <p>Invité pas encore dévoilé — inscris-toi pour être prévenu·e dès qu'il est annoncé, avant l'ouverture de la billetterie.</p>
+          <a href="/inscription.html">Être prévenu·e</a>
+        </div>
+      </details>
+      <details class="other-card">
+        <summary>
+          <div>
+            <p class="ti">Quelqu'un qui a vu ce qu'on ne voit jamais.</p>
+            <span class="dt">📅 Mardi 17 novembre 2026 · 19h00</span>
+          </div>
+          <span class="arrow">›</span>
+        </summary>
+        <div class="panel">
+          <p>Invité pas encore dévoilé — inscris-toi pour être prévenu·e dès qu'il est annoncé, avant l'ouverture de la billetterie.</p>
+          <a href="/inscription.html">Être prévenu·e</a>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <p class="eyebrow">Billets</p>
+  <div class="qty-row">
+    <div class="label">Place standard<small>19€ / personne</small></div>
+    <div class="stepper">
+      <button id="minus" type="button" aria-label="moins">–</button>
+      <span id="qty">1</span>
+      <button id="plus" type="button" aria-label="plus">+</button>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="row"><span id="rowLabel">1 place × 19€</span><span id="rowAmount">19€</span></div>
+    <div class="row total"><span>Total</span><span id="total">19€</span></div>
+  </div>
+
+  <button class="pay-btn" type="button" onclick="alert('Maquette uniquement — ce bouton redirigera vers le paiement sécurisé HelloAsso une fois le lien de billetterie branché.')">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    Procéder au paiement sécurisé
+  </button>
+  <p class="secure-note">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    Paiement géré par HelloAsso — RARE Club ne stocke aucune donnée bancaire
+  </p>
+
+</main>
+
+<script>
+  var qty = 1, price = 19;
+  function render(){
+    document.getElementById('qty').textContent = qty;
+    document.getElementById('rowLabel').textContent = qty + (qty > 1 ? ' places × ' : ' place × ') + price + '€';
+    document.getElementById('rowAmount').textContent = (qty*price) + '€';
+    document.getElementById('total').textContent = (qty*price) + '€';
+  }
+  document.getElementById('plus').addEventListener('click', function(){ if(qty<10){qty++; render();} });
+  document.getElementById('minus').addEventListener('click', function(){ if(qty>1){qty--; render();} });
+</script>
+
+</body>
+</html>
