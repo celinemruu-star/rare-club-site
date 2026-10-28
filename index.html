@@ -125,6 +125,7 @@
   }
 
   /* ---- action buttons row ---- */
+  .boxed{background:var(--wine-soft); border:1px solid var(--line); padding:32px;}
   .actions{display:flex; flex-wrap:wrap; gap:10px;}
   .action-btn{
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
@@ -430,20 +431,32 @@
   </section>
 
   <section>
-    <p class="eyebrow"><span class="fr">Participer autrement</span><span class="en">Get involved</span></p>
-    <div class="actions">
-      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20veux%20devenir%20intervenant">
-        <span class="fr">Je veux devenir intervenant</span><span class="en">I want to be a speaker</span>
-      </a>
-      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20propose%20un%20sujet">
-        <span class="fr">Je propose un sujet</span><span class="en">I'd like to suggest a topic</span>
-      </a>
-      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20mon%20bar">
-        <span class="fr">Je veux RARE Club dans mon bar</span><span class="en">I want RARE Club in my bar</span>
-      </a>
-      <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20ma%20ville">
-        <span class="fr">Je veux RARE Club dans ma ville</span><span class="en">I want RARE Club in my city</span>
-      </a>
+    <div class="boxed">
+      <p class="eyebrow"><span class="fr">Participer autrement</span><span class="en">Get involved</span></p>
+      <div class="actions">
+        <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20veux%20devenir%20intervenant">
+          <span class="fr">Je veux devenir intervenant</span><span class="en">I want to be a speaker</span>
+        </a>
+        <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20Je%20propose%20un%20sujet">
+          <span class="fr">Je propose un sujet</span><span class="en">I'd like to suggest a topic</span>
+        </a>
+        <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20mon%20bar">
+          <span class="fr">Je veux RARE Club dans mon bar</span><span class="en">I want RARE Club in my bar</span>
+        </a>
+        <a class="action-btn" href="mailto:contact.rareclub@gmail.com?subject=RARE%20Club%20—%20RARE%20Club%20dans%20ma%20ville">
+          <span class="fr">Je veux RARE Club dans ma ville</span><span class="en">I want RARE Club in my city</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="fr">Questions fréquentes</span><span class="en">FAQ</span></p>
+    <div class="faq">
+      <details><summary><span class="fr">Où et quand ?</span><span class="en">Where and when?</span></summary><p><span class="fr">Tous les mardis, dans le quartier des Chartrons à Bordeaux — adresse précise communiquée aux inscrit·e·s.</span><span class="en">Every Tuesday, in the Chartrons district of Bordeaux — exact address shared with registrants.</span></p></details>
+      <details><summary><span class="fr">Seul·e ou accompagné·e ?</span><span class="en">Alone or with someone?</span></summary><p><span class="fr">Les deux : on vient pour rencontrer d'autres curieux.</span><span class="en">Either works: it's a good place to meet other curious people.</span></p></details>
+      <details><summary><span class="fr">Qui anime ?</span><span class="en">Who hosts it?</span></summary><p>Céline Moreau, <span class="fr">journaliste TV.</span><span class="en">TV journalist.</span></p></details>
+      <details><summary><span class="fr">Ça dure combien de temps ?</span><span class="en">How long does it last?</span></summary><p><span class="fr">Environ une heure d'interview, suivie d'un temps d'échange autour d'un verre.</span><span class="en">About an hour of interview, followed by drinks and conversation.</span></p></details>
     </div>
   </section>
 
@@ -459,16 +472,6 @@
       </form>
       <p class="newsletter-confirm" id="newsletterConfirm"><span class="fr">C'est noté — vérifie ta boîte mail pour confirmer ton inscription.</span><span class="en">Got it — check your inbox to confirm your subscription.</span></p>
       <iframe name="brevoFrame" style="display:none;" title="newsletter"></iframe>
-    </div>
-  </section>
-
-  <section>
-    <p class="eyebrow"><span class="fr">Questions fréquentes</span><span class="en">FAQ</span></p>
-    <div class="faq">
-      <details><summary><span class="fr">Où et quand ?</span><span class="en">Where and when?</span></summary><p><span class="fr">Tous les mardis, dans le quartier des Chartrons à Bordeaux — adresse précise communiquée aux inscrit·e·s.</span><span class="en">Every Tuesday, in the Chartrons district of Bordeaux — exact address shared with registrants.</span></p></details>
-      <details><summary><span class="fr">Seul·e ou accompagné·e ?</span><span class="en">Alone or with someone?</span></summary><p><span class="fr">Les deux : on vient pour rencontrer d'autres curieux.</span><span class="en">Either works: it's a good place to meet other curious people.</span></p></details>
-      <details><summary><span class="fr">Qui anime ?</span><span class="en">Who hosts it?</span></summary><p>Céline Moreau, <span class="fr">journaliste TV.</span><span class="en">TV journalist.</span></p></details>
-      <details><summary><span class="fr">Ça dure combien de temps ?</span><span class="en">How long does it last?</span></summary><p><span class="fr">Environ une heure d'interview, suivie d'un temps d'échange autour d'un verre.</span><span class="en">About an hour of interview, followed by drinks and conversation.</span></p></details>
     </div>
   </section>
 
