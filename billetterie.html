@@ -37,7 +37,6 @@
 
   nav{display:flex; align-items:center; justify-content:space-between; padding:22px 28px; max-width:620px; margin:0 auto;}
   nav .word{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:20px;}
-  nav .step{font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-dim);}
   nav .back{
     display:flex; align-items:center; gap:6px;
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
@@ -48,31 +47,54 @@
 
   main{max-width:620px; margin:0 auto; padding:20px 28px 100px;}
 
-  .event-card{
-    display:flex; gap:16px; align-items:flex-start;
-    background:var(--wine-soft); border:1px solid var(--line);
-    padding:22px; margin-bottom:20px;
-  }
-  .event-card .thumb{
-    width:64px; height:64px; flex:none; border-radius:6px;
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(250,248,242,0.12), transparent 60%),
-      linear-gradient(160deg, var(--wine), var(--wine-soft));
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-style:italic; font-size:24px; color:var(--rose-dim);
-  }
-  .event-card h2{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:19px; margin:0 0 6px; color:var(--cream); text-wrap:balance;}
-  .event-card .guest{font-size:13px; color:var(--rose-dim); margin:0 0 10px;}
-  .event-card .meta{display:flex; flex-direction:column; gap:4px;}
-  .event-card .meta span{font-size:12.5px; color:var(--cream-dim);}
-
   .eyebrow{
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
     color:var(--rose-dim); margin:0 0 14px;
   }
 
-  .other-events{margin-bottom:32px; border:1px solid var(--line); padding:4px 16px;}
+  /* ---- event ticket card (shared by main event + other events) ---- */
+  .event-card{
+    display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
+    background:var(--wine-soft); border:1px solid var(--line);
+    padding:22px; margin-bottom:14px;
+  }
+  .event-card .thumb{
+    width:56px; height:56px; flex:none; border-radius:6px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(250,248,242,0.12), transparent 60%),
+      linear-gradient(160deg, var(--wine), var(--wine-soft));
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-style:italic; font-size:21px; color:var(--rose-dim);
+  }
+  .event-card .info{flex:1; min-width:200px;}
+  .event-card h2{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:18px; margin:0 0 6px; color:var(--cream); text-wrap:balance;}
+  .event-card .guest{font-size:12.5px; color:var(--rose-dim); margin:0 0 8px;}
+  .event-card .meta{display:flex; flex-direction:column; gap:3px; margin-bottom:12px;}
+  .event-card .meta span{font-size:12px; color:var(--cream-dim);}
+  .event-card .price-note{font-family:var(--font-mono); font-size:11px; color:var(--rose-dim);}
+
+  .add-row{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    width:100%; margin-top:14px; padding-top:14px; border-top:1px solid var(--line);
+  }
+  .stepper{display:flex; align-items:center; gap:12px;}
+  .stepper button{
+    width:28px; height:28px; border-radius:50%; border:1px solid var(--line-strong);
+    background:transparent; color:var(--cream); font-size:15px; cursor:pointer; line-height:1;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .stepper button:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
+  .stepper span{font-family:var(--font-mono); min-width:16px; text-align:center;}
+  .add-btn{
+    font-family:var(--font-body); font-weight:600; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--wine); background:var(--cream); border:none; border-radius:999px; padding:10px 18px; cursor:pointer;
+    transition:background 0.15s, color 0.15s;
+  }
+  .add-btn:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+  .add-btn.added{background:transparent; color:var(--rose-dim); box-shadow:inset 0 0 0 1px var(--line-strong);}
+
+  .other-events{margin:28px 0; border:1px solid var(--line); padding:4px 16px;}
   .other-events summary{
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
     color:var(--rose-dim); cursor:pointer; list-style:none; padding:14px 0;
@@ -80,56 +102,32 @@
   .other-events summary::-webkit-details-marker{display:none;}
   .other-events summary::after{content:" +"; }
   .other-events[open] summary::after{content:" −";}
-  .other-events .inner{padding-bottom:14px;}
-  .other-card{border:1px solid var(--line); margin-bottom:10px;}
-  .other-card summary{
-    display:flex; justify-content:space-between; align-items:center; gap:14px;
-    padding:14px 16px; cursor:pointer; list-style:none;
-  }
-  .other-card summary::-webkit-details-marker{display:none;}
-  .other-card:hover summary{border-color:var(--line-strong);}
-  .other-card .ti{font-family:var(--font-display); font-style:italic; font-weight:600; font-size:14.5px; margin:0 0 4px; text-wrap:balance;}
-  .other-card .dt{font-family:var(--font-mono); font-size:11px; color:var(--rose-dim);}
-  .other-card .arrow{flex:none; font-size:14px; color:var(--rose-dim); transition:transform 0.15s;}
-  .other-card[open] .arrow{transform:rotate(90deg);}
-  .other-card .panel{padding:0 16px 16px; border-top:1px solid var(--line); margin-top:2px;}
-  .other-card .panel p{font-size:12.5px; color:var(--cream-dim); margin:12px 0 14px;}
-  .other-card .panel a{
-    display:inline-block; font-family:var(--font-body); font-weight:600; font-size:11.5px;
-    letter-spacing:0.08em; text-transform:uppercase; text-decoration:none;
-    color:var(--wine); background:var(--cream); border-radius:999px; padding:10px 18px;
-    transition:background 0.15s, color 0.15s;
-  }
-  .other-card .panel a:hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
+  .other-events .inner{padding-bottom:16px; display:flex; flex-direction:column; gap:14px;}
+  .other-events .event-card{margin-bottom:0;}
 
-  .qty-row{
-    display:flex; align-items:center; justify-content:space-between;
-    border:1px solid var(--line); padding:18px 20px; margin-bottom:20px;
+  /* ---- cart ---- */
+  .cart{border-top:1px solid var(--line); padding-top:20px; margin-top:8px;}
+  .cart-empty{font-size:13px; color:var(--rose-dim);}
+  .cart-item{display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:13.5px; color:var(--cream-dim); margin-bottom:10px;}
+  .cart-item .ci-label small{display:block; font-family:var(--font-mono); font-size:10.5px; color:var(--rose-dim); margin-top:2px;}
+  .cart-item .ci-right{display:flex; align-items:center; gap:10px; flex:none;}
+  .cart-item .ci-remove{
+    background:none; border:none; color:var(--rose-dim); cursor:pointer; font-size:16px; line-height:1; padding:2px;
   }
-  .qty-row .label{font-size:14px;}
-  .qty-row .label small{display:block; font-family:var(--font-mono); font-size:11px; color:var(--rose-dim); margin-top:3px;}
-  .stepper{display:flex; align-items:center; gap:14px;}
-  .stepper button{
-    width:30px; height:30px; border-radius:50%; border:1px solid var(--line-strong);
-    background:transparent; color:var(--cream); font-size:16px; cursor:pointer; line-height:1;
-    transition:background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .stepper button:hover{background:var(--cream); border-color:var(--cream); color:var(--wine);}
-  .stepper span{font-family:var(--font-mono); min-width:16px; text-align:center;}
-
-  .summary{border-top:1px solid var(--line); padding-top:18px; margin-bottom:28px;}
-  .summary .row{display:flex; justify-content:space-between; font-size:13.5px; color:var(--cream-dim); margin-bottom:10px;}
-  .summary .row.total{border-top:1px solid var(--line); padding-top:14px; margin-top:4px; font-size:16px; color:var(--cream); font-family:var(--font-display); font-style:italic; font-weight:600;}
+  .cart-item .ci-remove:hover{color:var(--cream);}
+  .cart .row.total{border-top:1px solid var(--line); padding-top:14px; margin-top:8px; display:flex; justify-content:space-between; font-size:16px; color:var(--cream); font-family:var(--font-display); font-style:italic; font-weight:600;}
+  .cart-note{font-size:11.5px; color:var(--rose-dim); margin-top:10px; max-width:52ch;}
 
   .pay-btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
     width:100%; font-family:var(--font-body); font-weight:600; font-size:13px;
     letter-spacing:0.1em; text-transform:uppercase;
     color:var(--wine); background:var(--cream); border:2px solid var(--cream); border-radius:999px;
-    padding:17px; cursor:pointer;
+    padding:17px; cursor:pointer; margin-top:22px;
     transition:background 0.15s, color 0.15s;
   }
-  .pay-btn:hover{background:var(--wine); color:var(--cream);}
+  .pay-btn:disabled{opacity:0.4; cursor:default;}
+  .pay-btn:not(:disabled):hover{background:var(--wine); color:var(--cream); box-shadow:inset 0 0 0 1px var(--cream);}
   .secure-note{
     display:flex; align-items:center; justify-content:center; gap:7px;
     font-family:var(--font-mono); font-size:11px; color:var(--rose-dim);
@@ -147,9 +145,10 @@
 
 <main>
 
-  <div class="event-card">
+  <p class="eyebrow">Soirée sélectionnée</p>
+  <div class="event-card" data-event="e1">
     <div class="thumb">R.</div>
-    <div>
+    <div class="info">
       <h2>Quelles sont les dernières découvertes dans l'espace ?</h2>
       <p class="guest">Avec Franck Selsis — Directeur de recherche CNRS</p>
       <div class="meta">
@@ -157,59 +156,79 @@
         <span>🕐 19h00</span>
         <span>📍 Chartrons, Bordeaux</span>
       </div>
+      <span class="price-note">19€ / place</span>
+    </div>
+    <div class="add-row">
+      <div class="stepper">
+        <button type="button" data-step="minus" data-target="e1" aria-label="moins">–</button>
+        <span data-qty="e1">1</span>
+        <button type="button" data-step="plus" data-target="e1" aria-label="plus">+</button>
+      </div>
+      <button class="add-btn" type="button" data-add="e1">Ajouter au panier</button>
     </div>
   </div>
 
   <details class="other-events">
     <summary>D'autres soirées à venir</summary>
     <div class="inner">
-      <details class="other-card">
-        <summary>
-          <div>
-            <p class="ti">Un parcours qui sort de l'ordinaire.</p>
-            <span class="dt">📅 Mardi 10 novembre 2026 · 19h00</span>
+
+      <div class="event-card" data-event="e2">
+        <div class="thumb">?</div>
+        <div class="info">
+          <h2>Un parcours qui sort de l'ordinaire.</h2>
+          <p class="guest">Invité pas encore dévoilé</p>
+          <div class="meta">
+            <span>📅 Mardi 10 novembre 2026</span>
+            <span>🕐 19h00</span>
+            <span>📍 Chartrons, Bordeaux</span>
           </div>
-          <span class="arrow">›</span>
-        </summary>
-        <div class="panel">
-          <p>Invité pas encore dévoilé — inscris-toi pour être prévenu·e dès qu'il est annoncé, avant l'ouverture de la billetterie.</p>
-          <a href="/inscription.html">Être prévenu·e</a>
+          <span class="price-note">Tarif confirmé à l'ouverture (indicatif 19€/place)</span>
         </div>
-      </details>
-      <details class="other-card">
-        <summary>
-          <div>
-            <p class="ti">Quelqu'un qui a vu ce qu'on ne voit jamais.</p>
-            <span class="dt">📅 Mardi 17 novembre 2026 · 19h00</span>
+        <div class="add-row">
+          <div class="stepper">
+            <button type="button" data-step="minus" data-target="e2" aria-label="moins">–</button>
+            <span data-qty="e2">1</span>
+            <button type="button" data-step="plus" data-target="e2" aria-label="plus">+</button>
           </div>
-          <span class="arrow">›</span>
-        </summary>
-        <div class="panel">
-          <p>Invité pas encore dévoilé — inscris-toi pour être prévenu·e dès qu'il est annoncé, avant l'ouverture de la billetterie.</p>
-          <a href="/inscription.html">Être prévenu·e</a>
+          <button class="add-btn" type="button" data-add="e2">Pré-réserver</button>
         </div>
-      </details>
+      </div>
+
+      <div class="event-card" data-event="e3">
+        <div class="thumb">?</div>
+        <div class="info">
+          <h2>Quelqu'un qui a vu ce qu'on ne voit jamais.</h2>
+          <p class="guest">Invité pas encore dévoilé</p>
+          <div class="meta">
+            <span>📅 Mardi 17 novembre 2026</span>
+            <span>🕐 19h00</span>
+            <span>📍 Chartrons, Bordeaux</span>
+          </div>
+          <span class="price-note">Tarif confirmé à l'ouverture (indicatif 19€/place)</span>
+        </div>
+        <div class="add-row">
+          <div class="stepper">
+            <button type="button" data-step="minus" data-target="e3" aria-label="moins">–</button>
+            <span data-qty="e3">1</span>
+            <button type="button" data-step="plus" data-target="e3" aria-label="plus">+</button>
+          </div>
+          <button class="add-btn" type="button" data-add="e3">Pré-réserver</button>
+        </div>
+      </div>
+
     </div>
   </details>
 
-  <p class="eyebrow">Billets</p>
-  <div class="qty-row">
-    <div class="label">Place standard<small>19€ / personne</small></div>
-    <div class="stepper">
-      <button id="minus" type="button" aria-label="moins">–</button>
-      <span id="qty">1</span>
-      <button id="plus" type="button" aria-label="plus">+</button>
-    </div>
+  <p class="eyebrow">Mon panier</p>
+  <div class="cart">
+    <div id="cartList"><p class="cart-empty">Ton panier est vide — ajoute une soirée ci-dessus.</p></div>
+    <div class="row total"><span>Total à payer</span><span id="total">0€</span></div>
+    <p class="cart-note" id="cartNote" style="display:none;">Les places pour les soirées mystère ne sont pas encore en vente : en validant, tu nous envoies un mail pour qu'on te recontacte en priorité dès l'ouverture, avec le nombre de places souhaité.</p>
   </div>
 
-  <div class="summary">
-    <div class="row"><span id="rowLabel">1 place × 19€</span><span id="rowAmount">19€</span></div>
-    <div class="row total"><span>Total</span><span id="total">19€</span></div>
-  </div>
-
-  <button class="pay-btn" type="button" onclick="alert('Maquette uniquement — ce bouton redirigera vers le paiement sécurisé HelloAsso une fois le lien de billetterie branché.')">
+  <button class="pay-btn" type="button" id="payBtn" disabled onclick="handleCheckout()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-    Procéder au paiement sécurisé
+    <span id="payBtnLabel">Ajoute une soirée à ton panier</span>
   </button>
   <p class="secure-note">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
@@ -219,15 +238,100 @@
 </main>
 
 <script>
-  var qty = 1, price = 19;
-  function render(){
-    document.getElementById('qty').textContent = qty;
-    document.getElementById('rowLabel').textContent = qty + (qty > 1 ? ' places × ' : ' place × ') + price + '€';
-    document.getElementById('rowAmount').textContent = (qty*price) + '€';
-    document.getElementById('total').textContent = (qty*price) + '€';
+  var EVENTS = {
+    e1: { label: "Quelles sont les dernières découvertes dans l'espace ?", dateShort: "3 novembre", price: 19, mystery: false },
+    e2: { label: "Un parcours qui sort de l'ordinaire.", dateShort: "10 novembre", price: 19, mystery: true },
+    e3: { label: "Quelqu'un qui a vu ce qu'on ne voit jamais.", dateShort: "17 novembre", price: 19, mystery: true }
+  };
+
+  var qtys = { e1: 1, e2: 1, e3: 1 };
+  var cart = {}; // { e1: qty, ... } only entries the user added
+
+  document.querySelectorAll('[data-step]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-target');
+      var dir = btn.getAttribute('data-step');
+      if (dir === 'plus' && qtys[id] < 10) qtys[id]++;
+      if (dir === 'minus' && qtys[id] > 1) qtys[id]--;
+      document.querySelector('[data-qty="' + id + '"]').textContent = qtys[id];
+      if (cart[id]) { cart[id] = qtys[id]; renderCart(); }
+    });
+  });
+
+  document.querySelectorAll('[data-add]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-add');
+      cart[id] = qtys[id];
+      btn.textContent = 'Ajouté ✓';
+      btn.classList.add('added');
+      renderCart();
+    });
+  });
+
+  function renderCart(){
+    var list = document.getElementById('cartList');
+    var ids = Object.keys(cart);
+    var total = 0;
+    var hasMystery = false;
+
+    if (ids.length === 0) {
+      list.innerHTML = '<p class="cart-empty">Ton panier est vide — ajoute une soirée ci-dessus.</p>';
+    } else {
+      list.innerHTML = ids.map(function(id){
+        var ev = EVENTS[id];
+        var qty = cart[id];
+        var sub = ev.price * qty;
+        if (!ev.mystery) total += sub;
+        else hasMystery = true;
+        return '<div class="cart-item">' +
+          '<div class="ci-label">' + ev.label + (ev.mystery ? ' <small>' + ev.dateShort + ' — tarif à confirmer, ' + qty + ' place' + (qty>1?'s':'') + ' en pré-réservation</small>' : ' <small>' + ev.dateShort + ' — ' + qty + ' place' + (qty>1?'s':'') + '</small>') + '</div>' +
+          '<div class="ci-right">' + (ev.mystery ? '' : '<span>' + sub + '€</span>') +
+          '<button class="ci-remove" type="button" data-remove="' + id + '" aria-label="retirer">×</button></div>' +
+        '</div>';
+      }).join('');
+    }
+
+    document.getElementById('total').textContent = total + '€';
+    document.getElementById('cartNote').style.display = hasMystery ? 'block' : 'none';
+
+    var payBtn = document.getElementById('payBtn');
+    var payLabel = document.getElementById('payBtnLabel');
+    if (ids.length === 0) {
+      payBtn.disabled = true;
+      payLabel.textContent = 'Ajoute une soirée à ton panier';
+    } else {
+      payBtn.disabled = false;
+      payLabel.textContent = (total > 0 && hasMystery) ? 'Payer ' + total + '€ et envoyer ma pré-réservation'
+        : (total > 0 ? 'Procéder au paiement sécurisé' : 'Envoyer ma pré-réservation');
+    }
+
+    document.querySelectorAll('[data-remove]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-remove');
+        delete cart[id];
+        var addBtn = document.querySelector('[data-add="' + id + '"]');
+        addBtn.textContent = EVENTS[id].mystery ? 'Pré-réserver' : 'Ajouter au panier';
+        addBtn.classList.remove('added');
+        renderCart();
+      });
+    });
   }
-  document.getElementById('plus').addEventListener('click', function(){ if(qty<10){qty++; render();} });
-  document.getElementById('minus').addEventListener('click', function(){ if(qty>1){qty--; render();} });
+
+  function handleCheckout(){
+    var ids = Object.keys(cart);
+    var mysteryIds = ids.filter(function(id){ return EVENTS[id].mystery; });
+    var realIds = ids.filter(function(id){ return !EVENTS[id].mystery; });
+
+    if (mysteryIds.length){
+      var lines = mysteryIds.map(function(id){ return EVENTS[id].label + ' (' + cart[id] + ' place' + (cart[id]>1?'s':'') + ')'; }).join(' / ');
+      var subject = encodeURIComponent('RARE Club — Pré-réservation');
+      var body = encodeURIComponent('Bonjour,\n\nJe souhaite pré-réserver des places pour :\n' + lines + '\n\nMerci de me recontacter dès l\'ouverture de la billetterie.');
+      window.location.href = 'mailto:contact.rareclub@gmail.com?subject=' + subject + '&body=' + body;
+    }
+    if (realIds.length){
+      alert('Maquette uniquement — ce bouton redirigera vers le paiement sécurisé HelloAsso une fois le lien de billetterie branché.');
+    }
+  }
 </script>
 
 </body>
