@@ -221,7 +221,7 @@
 
   .taste-label{font-size:12.5px; color:var(--rose-dim); margin:22px 0 10px;}
   .pills{display:flex; flex-wrap:wrap; gap:9px;}
-  .pills span{
+  .pills > span{
     font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
     color:var(--rose-dim); border:1px solid var(--line); border-radius:999px; padding:7px 14px;
   }
@@ -231,7 +231,7 @@
     background:var(--wine); border:1px solid var(--line); padding:24px 22px;
     transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .step:hover{border-color:var(--champagne); transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.35);}
+  .step:hover{border-color:var(--cream); transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,0.35);}
   .step-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
   .step .n{font-family:var(--font-display); font-style:italic; font-size:26px; color:var(--rose-dim);}
   .step .step-icon{color:var(--rose-dim); opacity:0.85; transition:color 0.2s ease;}
@@ -248,10 +248,20 @@
   .join h2{font-family:var(--font-display); font-weight:600; font-style:italic; font-size:clamp(22px,4vw,30px); margin:0 0 10px;}
   .join p{font-size:14px; color:var(--rose-dim); max-width:46ch; margin:0 auto 26px;}
 
-  dl.faq{margin:0;}
-  dl.faq div{border-top:1px solid var(--line); padding:20px 0;}
-  dl.faq dt{font-family:var(--font-display); font-weight:600; font-size:17px; margin:0 0 8px;}
-  dl.faq dd{margin:0; font-size:13.5px; color:var(--cream-dim); max-width:56ch;}
+  .faq{margin:0;}
+  .faq details{border-top:1px solid var(--line); padding:20px 0;}
+  .faq summary{
+    font-family:var(--font-display); font-weight:600; font-size:17px; color:var(--cream);
+    cursor:pointer; list-style:none;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:"+"; flex:none; font-family:var(--font-mono); font-size:17px; font-weight:400;
+    color:var(--rose-dim);
+  }
+  .faq details[open] summary::after{content:"−";}
+  .faq details p{margin:12px 0 0; font-size:13.5px; color:var(--cream-dim); max-width:56ch;}
 
   footer{
     margin-top:88px; padding:26px 28px; border-top:1px solid var(--line);
@@ -386,7 +396,7 @@
         </div>
         <p class="step-label"><span class="fr">L'accès</span><span class="en">Access</span></p>
         <p class="step-title"><span class="fr">Une place parmi les curieux.</span><span class="en">A seat among the curious.</span></p>
-        <p class="step-desc"><span class="fr">Inscris-toi à une soirée RARE Club et découvre qui sera notre prochain invité.</span><span class="en">Sign up for a RARE Club evening and find out who our next guest will be.</span></p>
+        <p class="step-desc"><span class="fr">Inscris-toi, et découvre qui sera le prochain invité.</span><span class="en">Sign up, and find out who's next.</span></p>
       </div>
       <div class="step">
         <div class="step-top">
@@ -395,7 +405,7 @@
         </div>
         <p class="step-label"><span class="fr">La rencontre</span><span class="en">The encounter</span></p>
         <p class="step-title"><span class="fr">Un cercle à taille humaine.</span><span class="en">A circle sized for connection.</span></p>
-        <p class="step-desc"><span class="fr">Une trentaine de personnes, un lieu intimiste et une atmosphère propice aux rencontres.</span><span class="en">About thirty people, an intimate venue, an atmosphere made for meeting people.</span></p>
+        <p class="step-desc"><span class="fr">Une trentaine de curieux, un lieu intimiste.</span><span class="en">About thirty curious people, one intimate venue.</span></p>
       </div>
       <div class="step">
         <div class="step-top">
@@ -404,7 +414,7 @@
         </div>
         <p class="step-label"><span class="fr">La conversation</span><span class="en">The conversation</span></p>
         <p class="step-title"><span class="fr">Des histoires qui marquent.</span><span class="en">Stories that stay with you.</span></p>
-        <p class="step-desc"><span class="fr">Écoute un parcours hors du commun, pose tes questions et découvre l'envers du décor.</span><span class="en">Listen to an extraordinary journey, ask your questions, and see behind the scenes.</span></p>
+        <p class="step-desc"><span class="fr">Un parcours hors du commun. Tes questions, en direct.</span><span class="en">An extraordinary journey. Your questions, live.</span></p>
       </div>
       <div class="step">
         <div class="step-top">
@@ -413,7 +423,7 @@
         </div>
         <p class="step-label"><span class="fr">Le partage</span><span class="en">The sharing</span></p>
         <p class="step-title"><span class="fr">La soirée continue.</span><span class="en">The evening continues.</span></p>
-        <p class="step-desc"><span class="fr">Prolonge les échanges autour d'un verre et fais de nouvelles rencontres, bien au-delà de la scène.</span><span class="en">Carry the conversation on over a drink and meet new people, well beyond the stage.</span></p>
+        <p class="step-desc"><span class="fr">La conversation continue, autour d'un verre.</span><span class="en">The conversation continues, over a drink.</span></p>
       </div>
     </div>
   </section>
@@ -446,12 +456,12 @@
 
   <section>
     <p class="eyebrow"><span class="fr">Questions fréquentes</span><span class="en">FAQ</span></p>
-    <dl class="faq">
-      <div><dt><span class="fr">Où et quand ?</span><span class="en">Where and when?</span></dt><dd><span class="fr">Tous les mardis, dans le quartier des Chartrons à Bordeaux — adresse précise communiquée aux inscrit·e·s.</span><span class="en">Every Tuesday, in the Chartrons district of Bordeaux — exact address shared with registrants.</span></dd></div>
-      <div><dt><span class="fr">Seul·e ou accompagné·e ?</span><span class="en">Alone or with someone?</span></dt><dd><span class="fr">Les deux : on vient pour rencontrer d'autres curieux.</span><span class="en">Either works: it's a good place to meet other curious people.</span></dd></div>
-      <div><dt><span class="fr">Qui anime ?</span><span class="en">Who hosts it?</span></dt><dd>Céline Moreau, <span class="fr">journaliste TV.</span><span class="en">TV journalist.</span></dd></div>
-      <div><dt><span class="fr">Ça dure combien de temps ?</span><span class="en">How long does it last?</span></dt><dd><span class="fr">Environ une heure d'interview, suivie d'un temps d'échange autour d'un verre.</span><span class="en">About an hour of interview, followed by drinks and conversation.</span></dd></div>
-    </dl>
+    <div class="faq">
+      <details><summary><span class="fr">Où et quand ?</span><span class="en">Where and when?</span></summary><p><span class="fr">Tous les mardis, dans le quartier des Chartrons à Bordeaux — adresse précise communiquée aux inscrit·e·s.</span><span class="en">Every Tuesday, in the Chartrons district of Bordeaux — exact address shared with registrants.</span></p></details>
+      <details><summary><span class="fr">Seul·e ou accompagné·e ?</span><span class="en">Alone or with someone?</span></summary><p><span class="fr">Les deux : on vient pour rencontrer d'autres curieux.</span><span class="en">Either works: it's a good place to meet other curious people.</span></p></details>
+      <details><summary><span class="fr">Qui anime ?</span><span class="en">Who hosts it?</span></summary><p>Céline Moreau, <span class="fr">journaliste TV.</span><span class="en">TV journalist.</span></p></details>
+      <details><summary><span class="fr">Ça dure combien de temps ?</span><span class="en">How long does it last?</span></summary><p><span class="fr">Environ une heure d'interview, suivie d'un temps d'échange autour d'un verre.</span><span class="en">About an hour of interview, followed by drinks and conversation.</span></p></details>
+    </div>
   </section>
 
   <section>
@@ -637,13 +647,13 @@
       titreFr: "Quelles sont les dernières découvertes dans l'espace ?",
       titreEn: "What are the latest discoveries in space?",
       categorieFr: "Sciences & espace", categorieEn: "Science & space",
-      bannerImg: "img/evt-conversation.jpg",
+      bannerImg: "https://images.unsplash.com/photo-1742973480367-a2ba69fc7cd0?q=80&w=1200&auto=format&fit=crop",
       mystery: false,
       guestName: "Franck Selsis",
       guestRoleFr: "Directeur de recherche CNRS au laboratoire d'astrophysique de Bordeaux",
       guestRoleEn: "CNRS Research Director at the Bordeaux Astrophysics Laboratory",
-      descFr: "Physicien, astrophysicien, spécialiste des exoplanètes et des atmosphères, Franck Selsis a participé à la première détection d'une molécule dans l'atmosphère d'une exoplanète, à la première découverte d'une exoplanète rocheuse potentiellement habitable (Kepler-186 f), et à l'étude des sept planètes de type terrestre qui orbitent autour de l'étoile Trappist-1. Il a été plusieurs fois primé : lauréat d'une bourse du Conseil européen de la recherche (ERC), du prix Chercheur de l'année en Aquitaine et du prix Louis D. de la Fondation Charles Defforey-Institut de France. Aujourd'hui, Franck Selsis est impliqué dans la prochaine mission Ariel de l'ESA (Agence spatiale européenne), sur l'observation des exoplanètes, et travaille en tant qu'expert pour le CNES. Il mène des recherches dans trois domaines : les conditions d'habitabilité des planètes (origine, évolution et diversité des atmosphères planétaires) ; la recherche d'exoplanètes de type terrestre ; et la Terre primitive, pour découvrir le passé de la Terre il y a 4,5 milliards d'années, les premières traces de vie et la formation de l'atmosphère — une recherche qui mêle géologie, climatologie et astronomie.",
-      descEn: "A physicist and astrophysicist specializing in exoplanets and atmospheres, Franck Selsis took part in the first-ever detection of a molecule in an exoplanet's atmosphere, the first discovery of a potentially habitable rocky exoplanet (Kepler-186f), and the study of the seven Earth-sized planets orbiting the star TRAPPIST-1. He has received several awards, including a European Research Council (ERC) grant, the Aquitaine Researcher of the Year award, and the Louis D. Prize from the Fondation Charles Defforey-Institut de France. He is now involved in ESA's upcoming Ariel mission on exoplanet observation, and works as an expert for CNES, the French space agency. His research spans three areas: planetary habitability (the origin, evolution and diversity of planetary atmospheres); the search for Earth-type exoplanets; and the primitive Earth, uncovering its past 4.5 billion years ago, the earliest traces of life, and the formation of the atmosphere — research blending geology, climatology and astronomy.",
+      descFr: "Astrophysicien au CNRS, spécialiste des exoplanètes. Il a participé à la première détection d'une molécule dans l'atmosphère d'une exoplanète, à la découverte de Kepler-186 f, et à l'étude des sept planètes de Trappist-1. Lauréat d'une bourse ERC et du prix Chercheur de l'année en Aquitaine, il travaille aujourd'hui sur la mission Ariel de l'ESA.",
+      descEn: "A CNRS astrophysicist specializing in exoplanets. He took part in the first-ever detection of a molecule in an exoplanet's atmosphere, the discovery of Kepler-186f, and the study of the seven TRAPPIST-1 planets. An ERC grant recipient and Aquitaine Researcher of the Year, he now works on ESA's Ariel mission.",
       soldOut: false,
       ticketUrl: "/billetterie.html"
     },
@@ -655,7 +665,7 @@
       lieuEn: "Chartrons, Bordeaux — address shared with registrants",
       titreFr: "Un parcours qui sort de l'ordinaire.", titreEn: "A life story out of the ordinary.",
       categorieFr: "Soirée mystère", categorieEn: "Mystery evening",
-      bannerImg: "img/evt-rencontre.jpg",
+      bannerImg: "https://images.unsplash.com/photo-1578911489158-334e5cd2a051?q=80&w=1200&auto=format&fit=crop",
       mystery: true,
       descFr: "Deuxième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
       descEn: "Second evening of the RARE Club cycle. Guest details will be revealed a few weeks before the date.",
@@ -670,7 +680,7 @@
       lieuEn: "Chartrons, Bordeaux — address shared with registrants",
       titreFr: "Quelqu'un qui a vu ce qu'on ne voit jamais.", titreEn: "Someone who has seen what you never get to see.",
       categorieFr: "Soirée mystère", categorieEn: "Mystery evening",
-      bannerImg: "img/evt-partage.jpg",
+      bannerImg: "https://images.unsplash.com/photo-1709548145082-04d0cde481d4?q=80&w=1200&auto=format&fit=crop",
       mystery: true,
       descFr: "Troisième soirée du cycle RARE Club. Les détails de l'invité seront dévoilés quelques semaines avant la date.",
       descEn: "Third evening of the RARE Club cycle. Guest details will be revealed a few weeks before the date.",
