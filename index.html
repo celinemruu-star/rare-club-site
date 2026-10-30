@@ -618,15 +618,48 @@
     if (e.target === legalOverlay) legalOverlay.classList.remove('open');
   });
 
+  /* ---- Google Analytics 4 : chargé seulement si la personne a accepté
+     la "mesure d'audience" dans le bandeau cookies — aucun tracking sans ça. ---- */
+  var GA_ID = 'G-ED3B4REJJ4';
+  var gaLoaded = false;
+  function loadGA(){
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+    attachClickTracking();
+  }
+  function trackEvent(name, label){
+    if (window.gtag) gtag('event', name, { event_label: label });
+  }
+  function labelOf(el){ return (el.textContent || '').trim().replace(/\s+/g,' ').slice(0,80); }
+  function attachClickTracking(){
+    document.addEventListener('click', function(e){
+      var ticketEl = e.target.closest('.ticket-btn, .pay-btn');
+      if (ticketEl) { trackEvent('ticket_click', labelOf(ticketEl)); return; }
+      var btnEl = e.target.closest('.cta, .action-btn');
+      if (btnEl) { trackEvent('button_click', labelOf(btnEl)); }
+    });
+    var nf = document.getElementById('newsletterForm');
+    if (nf) nf.addEventListener('submit', function(){ trackEvent('newsletter_signup', 'Newsletter'); });
+  }
+
   /* cookies : préférence stockée localement sur l'appareil du visiteur */
   try {
     var saved = JSON.parse(localStorage.getItem('rareClubCookiePrefs') || '{}');
-    if (saved.analytics) document.getElementById('cookieAnalytics').checked = true;
+    if (saved.analytics) { document.getElementById('cookieAnalytics').checked = true; loadGA(); }
   } catch(e){}
   document.getElementById('cookieSave').addEventListener('click', function(){
     var analytics = document.getElementById('cookieAnalytics').checked;
     try { localStorage.setItem('rareClubCookiePrefs', JSON.stringify({analytics:analytics})); } catch(e){}
     document.getElementById('cookieConfirm').style.display = 'block';
+    if (analytics) loadGA();
   });
 
   /* Un événement par mois. Pour en ajouter : copie un bloc {...} ci-dessous.

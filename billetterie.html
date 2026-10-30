@@ -313,6 +313,40 @@
 </main>
 
 <script>
+  /* ---- Google Analytics 4 : même logique de consentement que la page d'accueil
+     (préférence déjà enregistrée là-bas, partagée via le même domaine). ---- */
+  var GA_ID = 'G-ED3B4REJJ4';
+  var gaLoaded = false;
+  function loadGA(){
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+    attachClickTracking();
+  }
+  function trackEvent(name, label){
+    if (window.gtag) gtag('event', name, { event_label: label });
+  }
+  function labelOf(el){ return (el.textContent || '').trim().replace(/\s+/g,' ').slice(0,80); }
+  function attachClickTracking(){
+    document.addEventListener('click', function(e){
+      var ticketEl = e.target.closest('.pay-btn, .ci-remove, [data-add]');
+      if (ticketEl) { trackEvent('ticket_click', labelOf(ticketEl)); return; }
+      var tabEl = e.target.closest('.tab-btn');
+      if (tabEl) { trackEvent('button_click', labelOf(tabEl)); }
+    });
+  }
+  try {
+    var savedPrefs = JSON.parse(localStorage.getItem('rareClubCookiePrefs') || '{}');
+    if (savedPrefs.analytics) loadGA();
+  } catch(e){}
+
   // ---- tabs ----
   document.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
